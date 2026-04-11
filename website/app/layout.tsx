@@ -7,6 +7,15 @@ import TopLoader from "@/components/TopLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const metadata: Metadata = {
+  title: 'HH Consulting Architects and Engineers', // This replaces "localhost:3000"
+  description: 'Innovative sustainability and human-centric architectural design.',
+  icons: {
+    icon: '/favicon.png', // Standard favicon
+    apple: '/apple-touch-icon.png', // For iPhone home screens
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">

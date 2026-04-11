@@ -1,4 +1,4 @@
-"use client"; // Required for interval logic
+"use client";
 import { useState, useEffect } from 'react';
 import { 
   Target, 
@@ -28,6 +28,11 @@ import slide03 from '../public/03.png'
 import slide04 from '../public/04.png'
 import slide05 from '../public/05.png'
 
+import facebook from '../public/facebookIcon.png'
+import youtube from '../public/youtubeIcon01.png'
+import twitter from '../public/twitterIcon.png'
+import linkedin from '../public/linkedinIcon.png'
+
 import tower from '../public/kebede-tower.png'
 import airline from '../public/airline.png'
 import airline2 from '../public/airline02.png'
@@ -53,7 +58,7 @@ import rift from '../public/riftvalley.jpeg'
 import elsewedy from '../public/elsewedy.jpeg'
 
 const slides = [
-  { src: slide01, title: "Dr. Ali Birra Comprehensive Hospital", location: "Innovative Healthcare Infrastructure" },
+  { src: slide01, title: "Dr. Ali Birra Comprehensive Hospital", location: "Innovative Healthcare Infrastructure", },
   { src: slide02, title: "Dr. Ali Birra Guest House", location: "Resilient Architectural Design" },
   { src: slide03, title: "Modern Urban Living", location: "Structural Excellence" },
   { src: slide04, title: "Haramaya Guest House", location: "Sustainability & Function" },
@@ -88,6 +93,13 @@ const partners = [
   { src: elsewedy, alt: 'Elsewedy Electric' },
 ]
 
+const socialMedia = [
+  {src:facebook, alt:'facebook',href:"https://web.facebook.com/profile.php?id=100076434397072"},
+  {src:youtube, alt:'youtube',href:"https://www.youtube.com/@hhconsulting208"},
+  {src:twitter, alt:'twitter',},
+  {src:linkedin, alt:'linkedin'},
+]
+
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -102,12 +114,10 @@ export default function HomePage() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    // CHANGE 1: Reduced pt-32 to pt-16 (matches your new slim navbar)
-    <main className="pt-18 bg-white">
+    <main className="pt-16 bg-white overflow-x-hidden">
       
       {/* PROFESSIONAL SLIDESHOW LANDING PAGE */}
-      {/* CHANGE 2: Increased height to h-screen or h-[90vh] to fill the space */}
-      <section className="relative w-full h-[80vh] lg:h-[90vh] overflow-hidden bg-slate-900">
+      <section className="relative w-full h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden bg-slate-900">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -120,25 +130,24 @@ export default function HomePage() {
               alt={slide.title}
               fill
               className="object-cover transition-transform duration-[10000ms]"
-              // Reduced scaling intensity slightly for better clarity
               style={{ transform: index === currentSlide ? 'scale(1.1)' : 'scale(1.0)' }}
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-slate-900/10" />
             
-            <div className="absolute bottom-20 left-6 lg:left-20 max-w-3xl text-white">
-              <p className="text-blue-400 font-bold tracking-[0.4em] uppercase text-xs mb-4">
+            <div className="absolute bottom-24 md:bottom-32 left-6 lg:left-20 max-w-[90%] md:max-w-3xl text-white">
+              <p className="text-blue-400 font-bold tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs mb-4">
                 {slide.location}
               </p>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
                 {slide.title}
               </h1>
             </div>
           </div>
         ))}
 
-        {/* Navigation Controls */}
-        <div className="absolute bottom-10 right-6 lg:right-20 flex gap-4">
+        {/* Navigation Controls - Hidden on small mobile for cleaner look */}
+        <div className="hidden sm:flex absolute bottom-10 right-6 lg:right-20 gap-4">
           <button onClick={prevSlide} className="p-3 border border-white/20 rounded-full text-white hover:bg-white/10 transition-colors">
             <ChevronLeft size={24} />
           </button>
@@ -152,98 +161,79 @@ export default function HomePage() {
           {slides.map((_, i) => (
             <div 
               key={i} 
-              className={`h-1 transition-all duration-500 rounded-full ${i === currentSlide ? "w-12 bg-blue-500" : "w-4 bg-white/30"}`}
+              className={`h-1 transition-all duration-500 rounded-full ${i === currentSlide ? "w-8 md:w-12 bg-blue-500" : "w-4 bg-white/30"}`}
             />
           ))}
         </div>
       </section>
 
-      {/* ... the rest of your sections remain the same ... */}
-      
       {/* 1. WHO WE ARE */}
-      <section id="about" className="px-6 lg:px-20 py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-stretch">
-          <div className="flex flex-col justify-center">
-            <h2 className="text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-gray-400 mb-8">
+      <section id="about" className="px-6 lg:px-20 py-16 md:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="flex flex-col justify-center order-2 lg:order-1">
+            <h2 className="text-xl md:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-gray-400 mb-6 md:mb-8">
               Who We Are
             </h2>
-            <p className="text-gray-600 leading-relaxed max-w-lg mb-8">
-              A multidisciplinary firm based in Ethiopia, dedicated to providing innovative, sustainable, and integrated solutions in architecture and engineering. We combine visionary design with technical excellence to deliver impactful and resilient projects across Ethiopia and beyond.
-            </p>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-900 mb-4">
-              OUR APPROACH
-            </h3>
-            <p className="text-gray-600 leading-relaxed max-w-lg mb-8">
-              We are committed to excellence, sustainability, and innovation. Our designs balance aesthetics, function, and environmental responsibility. We work closely with clients, stakeholders, and communities to ensure every project meets technical, regulatory, and social expectations.
-            </p>
-            <Link href="/staff" className="text-sm font-bold uppercase tracking-widest text-blue-600 flex items-center gap-2 group mt-auto">
+            <div className="space-y-6 text-gray-600 leading-relaxed text-sm md:text-base">
+              <p>
+                A multidisciplinary firm based in Ethiopia, dedicated to providing innovative, sustainable, and integrated solutions in architecture and engineering. We combine visionary design with technical excellence to deliver impactful and resilient projects across Ethiopia and beyond.
+              </p>
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-slate-900 mb-3">
+                  OUR APPROACH
+                </h3>
+                <p>
+                  We are committed to excellence, sustainability, and innovation. Our designs balance aesthetics, function, and environmental responsibility. We work closely with clients to ensure every project meets technical, regulatory, and social expectations.
+                </p>
+              </div>
+            </div>
+            <Link href="/staff" className="text-sm font-bold uppercase tracking-widest text-blue-600 flex items-center gap-2 group mt-8">
               Meet our team <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
 
-          <div className="relative h-full min-h-[400px] rounded-sm overflow-hidden border border-slate-100 shadow-md">
+          <div className="relative h-[300px] md:h-[450px] lg:h-auto rounded-sm overflow-hidden border border-slate-100 shadow-md order-1 lg:order-2">
             <Image 
               src={tower} 
-              alt="HH Consulting Architects architectural project" 
+              alt="HH Consulting Architects project" 
               fill
               className="object-cover"
-              priority
             />
           </div>
         </div>
       </section>
 
       {/* 2. MISSION, VISION, VALUE */}
-      <section id="profile" className="px-6 lg:px-20 py-24 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          <div className="max-w-2xl">
-            <h2 className="flex justify-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-gray-400">
-              Our Cores
-           </h2>
-          </div>
+      <section id="profile" className="px-6 lg:px-20 py-16 md:py-24 max-w-7xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-gray-400">
+            Our Cores
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-slate-100 border border-slate-100 shadow-2xl">
-          <div className="group relative bg-[#1a2e44] p-12 transition-all duration-500 text-white">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-slate-100 border border-slate-100 shadow-xl md:shadow-2xl">
+          <CoreCard 
+            icon={<Target size={32} strokeWidth={1.5} />} 
+            title="Mission" 
+            text="HH Consulting Architects and Engineers plc is driven by a passion for automated project management solutions with architectural and civil engineering services. Implements innovative ideas across multiple services." 
+          />
+          <CoreCard 
+            icon={<Lightbulb size={32} strokeWidth={1.5} />} 
+            title="Vision" 
+            text="We strive to achieve innovative project management and quality control solutions for the local construction industry by creating partnership and creative working environment." 
+          />
+          <div className="group relative bg-[#1a2e44] p-8 md:p-12 transition-all duration-500 text-white">
             <div className="relative z-10">
               <div className="w-16 h-16 border-2 border-white/20 rounded-full flex items-center justify-center mb-8 group-hover:border-white transition-colors">
-                <Target className="text-white" size={32} strokeWidth={1.5} />
-              </div>
-              <h4 className="text-xl font-bold uppercase tracking-widest mb-6">Mission</h4>
-              <p className="text-slate-300 text-sm leading-relaxed group-hover:text-white transition-colors">
-                HH Consulting Architects and Engineers plc is driven by a passion for automated project management solutions with architectural and civil engineering services. Implements innovative ideas across multiple services and lines of business to contribute towards promoting efficient and economical project management and quality control solutions.
-              </p>
-            </div>
-          </div>
-
-          <div className="group relative bg-[#1a2e44] p-12 transition-all duration-500 text-white border-x border-white/5">
-            <div className="relative z-10">
-              <div className="w-16 h-16 border-2 border-white/20 rounded-full flex items-center justify-center mb-8 group-hover:border-white transition-colors">
-                <Lightbulb className="text-white" size={32} strokeWidth={1.5} />
-              </div>
-              <h4 className="text-xl font-bold uppercase tracking-widest mb-6">Vision</h4>
-              <p className="text-slate-300 text-sm leading-relaxed group-hover:text-white transition-colors">
-                We strive to achieve innovative project management and quality control solutions for the local construction industry. And also we implement a proper contract administration and design supervision methods by creating partnership and creative working environment.
-              </p>
-            </div>
-          </div>
-
-          <div className="group relative bg-[#1a2e44] p-12 transition-all duration-500 text-white">
-            <div className="relative z-10">
-              <div className="w-16 h-16 border-2 border-white/20 rounded-full flex items-center justify-center mb-8 group-hover:border-white transition-colors">
-                <Diamond className="text-white" size={32} strokeWidth={1.5} />
+                <Diamond size={32} strokeWidth={1.5} />
               </div>
               <h4 className="text-xl font-bold uppercase tracking-widest mb-6">Value</h4>
               <ul className="text-slate-300 text-sm space-y-4 group-hover:text-white transition-colors">
-                <li className="flex items-start gap-3 italic">
-                  <span className="text-blue-400 font-bold">•</span> Appropriate usage of time
-                </li>
-                <li className="flex items-start gap-3 italic">
-                  <span className="text-blue-400 font-bold">•</span> Developing the behavioral qualities of a good entrepreneurship
-                </li>
-                <li className="flex items-start gap-3 italic">
-                  <span className="text-blue-400 font-bold">•</span> Serving customers in kind
-                </li>
+                {["Appropriate usage of time", "Developing behavioral qualities", "Serving customers in kind"].map((val, i) => (
+                  <li key={i} className="flex items-start gap-3 italic">
+                    <span className="text-blue-400 font-bold">•</span> {val}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -251,106 +241,35 @@ export default function HomePage() {
       </section>
 
       {/* 3. EXPERTISE */}
-      <section id="expertise" className="px-6 lg:px-20 py-6 max-w-7xl mx-auto">
-        <h2 className="flex justify-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-gray-400 mb-8">
-              Professional Expertise
+      <section id="expertise" className="px-6 lg:px-20 py-12 max-w-7xl mx-auto">
+        <h2 className="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-gray-400 mb-12">
+          Professional Expertise
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
-          <ExpertiseBox id="feasibility" icon={<Ruler size={32} strokeWidth={1.5} />} title="Architectural and Engineering Design" desc={
-            <ul className="space-y-2 mt-2 list-disc">
-              <li >Architectural Design</li>
-              <li >Structural Engineering</li>
-              <li >Electrical and Mechanical Systems Design</li>
-              <li >Sanitary and Plumbing Systems</li>
-            </ul>
-          }/>
-          <ExpertiseBox id="feasibility" icon={<Pickaxe size={32} strokeWidth={1.5}/>} title="Infrastructure & Civil Engineering" desc={
-            <ul className="space-y-2 mt-2 list-disc">
-              <li >Road and Highway Design</li>
-              <li >Bridge and Transportation Structures</li>
-              <li >Irrigation and Water Resource Engineering</li>
-              <li >Infrastructure Master Planning</li>
-            </ul>
-          }/>
-          <ExpertiseBox id="feasibility" icon={<TreePine size={32} strokeWidth={1.5}/>} title="Urban & Environmental Service" desc={
-            <ul className="space-y-2 mt-2 list-disc">
-              <li >Urban and Regional Master Plans</li>
-              <li >Environmental Impact Assessments (EIA)</li>
-              <li >Landscape Architecture and Design</li>
-              <li >Topographic Surveys</li>
-            </ul>
-          }/>
-          <ExpertiseBox id="feasibility" icon={<FileSearch size={32} strokeWidth={1.5} />} title="Feasibility & Planning" desc={
-            <ul className="space-y-2 mt-2 list-disc">
-              <li >Feasibility Studies for Public and Private Projects</li>
-              <li >Strategic Planning and Site Analysis</li>
-              <li >Concept Development and Cost Estimations</li>
-            </ul>
-          }/>
-          <ExpertiseBox id="feasibility" icon={<Briefcase size={32} strokeWidth={1.5}/>} title="Construction Supervision & Project Management" desc={
-            <ul className="space-y-2 mt-2 list-disc">
-              <li >Contract Administration</li>
-              <li >Quality Control and Assurance</li>
-              <li >Site Supervision</li>
-              <li >Project Scheduling and Monitoring</li>
-            </ul>
-          }/>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
+          <ExpertiseBox icon={<Ruler size={32} />} title="Architectural & Engineering" desc={["Architectural Design", "Structural Engineering", "Electrical Systems", "Sanitary & Plumbing"]} />
+          <ExpertiseBox icon={<Pickaxe size={32} />} title="Infrastructure" desc={["Road & Highway Design", "Bridges", "Irrigation", "Master Planning"]} />
+          <ExpertiseBox icon={<TreePine size={32} />} title="Urban & Environmental" desc={["Regional Master Plans", "EIA Assessments", "Landscape Design", "Topographic Surveys"]} />
+          <ExpertiseBox icon={<FileSearch size={32} />} title="Feasibility & Planning" desc={["Public/Private Feasibility", "Strategic Site Analysis", "Cost Estimations"]} />
+          <ExpertiseBox icon={<Briefcase size={32} />} title="Project Management" desc={["Contract Administration", "Quality Control", "Site Supervision", "Scheduling"]} />
         </div>
       </section>
 
-      <section id="certificates" className="w-full py-6 bg-white">
-          <div className="w-full px-6 md:px-12 lg:px-20">
-            <div className="mb-16 text-center lg:text-left">
-              <h2 className="flex gap-2 justify-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-gray-400">
-                   <ShieldCheck /> Our Certifications
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {certificates.map((cert, index) => (
-                <div 
-                  key={index} 
-                  className="group relative aspect-[4/3] bg-white border border-slate-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-4"
-                >
-                  <Image
-                    src={cert.src}
-                    alt={cert.alt}
-                    fill
-                    className="object-contain p-2  transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-800 bg-white/95 px-2 py-1 shadow-sm">
-                      {cert.alt}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-      </section>
-
-      <section id="clients" className="w-full py-24 bg-slate-50 border-t border-gray-100">
+      {/* 4. CERTIFICATIONS */}
+      <section id="certificates" className="w-full py-16 bg-white">
         <div className="w-full px-6 md:px-12 lg:px-20">
-          <div className="mb-16 text-center">
-            <h2 className="text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-gray-400">
-              Partners & Potential Clients
+          <div className="mb-12 text-center">
+            <h2 className="inline-flex items-center gap-3 text-xl md:text-2xl font-bold tracking-[0.3em] uppercase text-gray-400">
+               Our Certifications
             </h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            {partners.map((partner, index) => (
-              <div 
-                key={index} 
-                className="group bg-white w-[160px] h-[120px] md:w-[200px] md:h-[140px] flex items-center justify-center p-4 border border-slate-200 rounded-sm shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-              >
-                <div className="relative w-full h-full">
-                  <Image 
-                    src={partner.src} 
-                    alt={partner.alt}
-                    fill
-                    {...(index === 0 && { priority: true })}
-                    sizes="200px"
-                    className="object-contain object-center transition-transform duration-500 scale-100 group-hover:scale-110"
-                    style={{ opacity: 1 }}
-                  />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+            {certificates.map((cert, index) => (
+              <div key={index} className="group relative aspect-[4/3] bg-white border border-slate-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center p-6">
+                <Image src={cert.src} alt={cert.alt} fill className="object-contain p-4" />
+                <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-800 bg-white/95 px-2 py-1 shadow-sm truncate w-full">
+                    {cert.alt}
+                  </span>
                 </div>
               </div>
             ))}
@@ -358,19 +277,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="location" className="px-6 lg:px-20 py-24 bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
+      {/* 5. CLIENTS */}
+      <section id="clients" className="w-full py-16 md:py-24 bg-slate-50 border-t border-gray-100">
+        <div className="w-full px-6 md:px-12 lg:px-20">
+          <div className="mb-12 text-center">
+            <h2 className="text-xl md:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-gray-400">
+              Partners & Potential Clients
+            </h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {partners.map((partner, index) => (
+              <div key={index} className="group bg-white w-[140px] h-[100px] md:w-[200px] md:h-[140px] flex items-center justify-center p-4 border border-slate-200 rounded-sm shadow-sm transition-all hover:shadow-lg">
+                <div className="relative w-full h-full">
+                  <Image src={partner.src} alt={partner.alt} fill className="object-contain transition-all duration-500 scale-90 group-hover:scale-100" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. LOCATION & CONTACT */}
+      <section id="location" className="px-6 lg:px-20 py-16 md:py-24 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20">
           <div>
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-blue-400 mb-12">Location</h2>
-            <div className="space-y-8">
-              <ContactItem icon={<MapPin />} title="Address" content="Ethiopia, Addis Ababa, 22 Mazoriya, Efrata building , 3rd floor" />
-              <ContactItem icon={<Phone />} title="Phone" content="011 8683830, +251 913592121" />
-              <ContactItem icon={<Mail />} title="Email" content="hhconsultingarchitectengineers@gmail.com " />
+            <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-blue-400 mb-10">Location</h2>
+            <div className="space-y-6 md:space-y-8">
+              <ContactItem icon={<MapPin />} title="Address" content="Ethiopia, Addis Ababa, 22 Mazoriya, Efrata building, 3rd floor" />
+              <ContactItem icon={<Phone />} title="Phone" content={<div className="flex flex-col text-base md:text-lg"><span>011 8683830</span><span>011 6672951</span><span>+251 913592121</span><span>+251 91122825 3</span><span>+251 966935979</span></div>} />
+              <ContactItem icon={<Mail />} title="Email" content={<span className="text-sm md:text-lg break-all">hhconsultingarchitectengineers@gmail.com</span>} />
               <ContactItem icon={<Globe />} title="Website" content="www.hhconsulting.et" />
             </div>
           </div>
-          <div className="h-80 bg-slate-800 rounded-sm border border-slate-700 flex items-center justify-center text-slate-500 italic">
-            [Google Maps Integration]
+          
+          <div className="flex flex-col gap-8">
+            <div className="h-64 md:h-80 bg-slate-800 rounded-sm border border-slate-700 overflow-hidden shadow-2xl">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.505697228!2d38.7891!3d9.0182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDEnMDYuNCJOIDM4wrA0NycyMC44IkU!5e0!3m2!1sen!2set!4v1625123456789" 
+                width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy">
+              </iframe>
+            </div>
+
+            <div className="pt-4">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-6 text-center md:text-left">Follow Us</p>
+              <div className="grid grid-cols-4 gap-4 max-w-sm mx-auto md:mx-0">
+                {socialMedia.map((social, index) => (
+                  <a key={index} href={social.href || "#"} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-center transition-all">
+                    <div className="relative w-full h-8 md:h-12">
+                      <Image src={social.src} alt={social.alt} fill className="object-contain transition-transform group-hover:scale-110" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -378,18 +337,29 @@ export default function HomePage() {
   );
 }
 
-function ExpertiseBox({ icon, title, desc, id }: any) {
+// Sub-components for cleaner structure
+function CoreCard({ icon, title, text }: any) {
   return (
-    <div id={id} className="bg-white p-10 hover:bg-slate-50 transition-all duration-300 group flex flex-col h-full border-r border-b border-gray-100">
-      <div className="text-blue-600 mb-6 group-hover:-translate-y-1 transition-transform">
-        {icon}
+    <div className="group relative bg-[#1a2e44] p-8 md:p-12 transition-all duration-500 text-white">
+      <div className="relative z-10">
+        <div className="w-16 h-16 border-2 border-white/20 rounded-full flex items-center justify-center mb-8 group-hover:border-white transition-colors">
+          <div className="text-white">{icon}</div>
+        </div>
+        <h4 className="text-xl font-bold uppercase tracking-widest mb-6">{title}</h4>
+        <p className="text-slate-300 text-sm leading-relaxed group-hover:text-white transition-colors">{text}</p>
       </div>
-      <h4 className="text-xl font-bold tracking-tight mb-4 text-slate-900 leading-tight">
-        {title}
-      </h4>
-      <div className="text-gray-500 text-sm leading-relaxed">
-        {desc}
-      </div>
+    </div>
+  );
+}
+
+function ExpertiseBox({ icon, title, desc }: any) {
+  return (
+    <div className="bg-white p-8 md:p-10 hover:bg-slate-50 transition-all duration-300 group flex flex-col h-full border-r border-b border-gray-100">
+      <div className="text-blue-600 mb-6 group-hover:-translate-y-1 transition-transform">{icon}</div>
+      <h4 className="text-lg md:text-xl font-bold tracking-tight mb-4 text-slate-900 leading-tight">{title}</h4>
+      <ul className="text-gray-500 text-xs md:text-sm space-y-2 list-disc ml-4">
+        {Array.isArray(desc) ? desc.map((item: string, i: number) => <li key={i}>{item}</li>) : desc}
+      </ul>
     </div>
   );
 }
@@ -397,10 +367,10 @@ function ExpertiseBox({ icon, title, desc, id }: any) {
 function ContactItem({ icon, title, content }: any) {
   return (
     <div className="flex gap-4 items-start group">
-      <div className="text-blue-400 mt-1 transition-transform group-hover:scale-110">{icon}</div>
+      <div className="text-blue-400 mt-1 transition-transform group-hover:scale-110 shrink-0">{icon}</div>
       <div>
         <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{title}</p>
-        <p className="text-lg font-light">{content}</p>
+        <div className="text-sm md:text-lg font-light leading-tight">{content}</div>
       </div>
     </div>
   );

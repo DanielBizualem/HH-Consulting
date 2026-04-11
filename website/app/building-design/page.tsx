@@ -40,8 +40,8 @@ export default function BuildingDesignPage() {
           <span className="text-xs font-bold tracking-[0.3em] uppercase text-blue-600 mb-4 block">
             Portfolio
           </span>
-          <h1 className="text-5xl md:text-7xl font-light tracking-tighter mb-8">
-            Building Design <span className="italic text-gray-400">&</span> Architecture
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-light tracking-tighter mb-8 leading-[1.1] md:leading-tight">
+              Building Design <span className="italic text-gray-400">&</span> Architecture
           </h1>
           <p className="text-md max-w-2xl leading-relaxed">
           At HH Consulting Architects and Engineers,
@@ -220,7 +220,8 @@ export default function BuildingDesignPage() {
               <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                 <Image 
                   src={project10} // Using the file name you provided
-                  alt="Haramaya University Project" 
+                  alt="NISS
+                  BUILDING" 
                   fill
                   className="object-cover" 
                 />
@@ -230,7 +231,7 @@ export default function BuildingDesignPage() {
             {/* Content Section - Right Side */}
             <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">Project Details</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">NISS BUILDING</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
 
@@ -262,7 +263,7 @@ export default function BuildingDesignPage() {
               {/* Content Section - LEFT Side */}
               <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">Haramaya Project Details</h3>
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">CITY LIGHT REAL STATE</h3>
                   <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
                 </div>
                 <div className="space-y-4">
@@ -294,7 +295,8 @@ export default function BuildingDesignPage() {
                 <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                   <Image 
                     src={project11} // Ensure 'haramaya' is imported or defined
-                    alt="Haramaya University Project" 
+                    alt="CITY LIGHT
+                    REAL STATE" 
                     fill
                     className="object-cover" 
                   />
@@ -308,7 +310,8 @@ export default function BuildingDesignPage() {
               <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                 <Image 
                   src={project12} // Using the file name you provided
-                  alt="Haramaya University Project" 
+                  alt="GREENLAND AND TOUR  
+                  HOTEL PLC." 
                   fill
                   className="object-cover" 
                 />
@@ -318,7 +321,7 @@ export default function BuildingDesignPage() {
             {/* Content Section - Right Side */}
             <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">Project Details</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">GREENLAND AND TOUR HOTEL PLC.</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
 
@@ -351,7 +354,7 @@ export default function BuildingDesignPage() {
               {/* Content Section - LEFT Side */}
               <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">Haramaya Project Details</h3>
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">BULE HORA UNIVERSITY INT. STADIUM</h3>
                   <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
                 </div>
                 <div className="space-y-4">
@@ -383,7 +386,8 @@ export default function BuildingDesignPage() {
                 <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                   <Image 
                     src={project13} // Ensure 'haramaya' is imported or defined
-                    alt="Haramaya University Project" 
+                    alt="BULE HORA UNIVERSITY
+                    INT. STADIUM" 
                     fill
                     
                   />
@@ -397,7 +401,8 @@ export default function BuildingDesignPage() {
               <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                 <Image 
                   src={project14} // Using the file name you provided
-                  alt="Haramaya University Project" 
+                  alt="BULE HORA 
+                  UNIVERSITY" 
                   fill
                   
                 />
@@ -407,7 +412,7 @@ export default function BuildingDesignPage() {
             {/* Content Section - Right Side */}
             <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">Project Details</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">BULE HORA UNIVERSITY</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
 
@@ -440,7 +445,7 @@ export default function BuildingDesignPage() {
               {/* Content Section - LEFT Side */}
               <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">Haramaya Project Details</h3>
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">BIRHANU AMARE MIXED-USE</h3>
                   <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
                 </div>
                 <div className="space-y-4">
@@ -472,7 +477,8 @@ export default function BuildingDesignPage() {
                 <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                   <Image 
                     src={project15} // Ensure 'haramaya' is imported or defined
-                    alt="Haramaya University Project" 
+                    alt="BIRHANU AMARE
+                    MIXED-USE" 
                     fill
                     
                   />
@@ -486,7 +492,8 @@ export default function BuildingDesignPage() {
               <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                 <Image 
                   src={project16} // Using the file name you provided
-                  alt="Haramaya University Project" 
+                  alt="BM HOUSING
+                  CORPORATION" 
                   fill
                  
                 />
@@ -496,7 +503,7 @@ export default function BuildingDesignPage() {
             {/* Content Section - Right Side */}
             <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">Project Details</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">BM HOUSING CORPORATION</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
 
@@ -529,7 +536,7 @@ export default function BuildingDesignPage() {
               {/* Content Section - LEFT Side */}
               <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">Haramaya Project Details</h3>
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">HOTEL APARTMENT</h3>
                   <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
                 </div>
                 <div className="space-y-4">
@@ -559,7 +566,8 @@ export default function BuildingDesignPage() {
                 <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                   <Image 
                     src={project17} // Ensure 'haramaya' is imported or defined
-                    alt="Haramaya University Project" 
+                    alt="OTEL
+                    APARTMENT" 
                     fill
                     
                   />
@@ -573,7 +581,8 @@ export default function BuildingDesignPage() {
               <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                 <Image 
                   src={project18} // Using the file name you provided
-                  alt="Haramaya University Project" 
+                  alt="MERKATO
+                  MIXED-USE" 
                   fill
                   
                 />
@@ -583,7 +592,7 @@ export default function BuildingDesignPage() {
             {/* Content Section - Right Side */}
             <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">Project Details</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">MERKATO MIXED-USE</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
 
@@ -614,7 +623,7 @@ export default function BuildingDesignPage() {
               {/* Content Section - LEFT Side */}
               <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">Haramaya Project Details</h3>
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">HAZAL REAL STATE</h3>
                   <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
                 </div>
                 <div className="space-y-4">
@@ -646,7 +655,8 @@ export default function BuildingDesignPage() {
                 <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                   <Image 
                     src={project19} // Ensure 'haramaya' is imported or defined
-                    alt="Haramaya University Project" 
+                    alt="HAZAL
+                    REAL STATE" 
                     fill
                     
                   />
@@ -660,7 +670,8 @@ export default function BuildingDesignPage() {
               <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                 <Image 
                   src={project20} // Using the file name you provided
-                  alt="Haramaya University Project" 
+                  alt="BM HOUSING
+                  PLC" 
                   fill
                  
                 />
@@ -670,7 +681,7 @@ export default function BuildingDesignPage() {
             {/* Content Section - Right Side */}
             <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">Project Details</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">BM HOUSING PLC</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
 
@@ -703,7 +714,7 @@ export default function BuildingDesignPage() {
               {/* Content Section - LEFT Side */}
               <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">Haramaya Project Details</h3>
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">MERKATO COMMERCIAL</h3>
                   <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
                 </div>
                 <div className="space-y-4">
@@ -733,7 +744,8 @@ export default function BuildingDesignPage() {
                 <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                   <Image 
                     src={project21} // Ensure 'haramaya' is imported or defined
-                    alt="Haramaya University Project" 
+                    alt="MERKATO
+                    COMMERCIAL" 
                     fill
                     
                   />
@@ -747,7 +759,8 @@ export default function BuildingDesignPage() {
               <div className="absolute inset-0 bg-slate-200 transition-transform duration-700 group-hover:scale-105">
                 <Image 
                   src={project22} // Using the file name you provided
-                  alt="Haramaya University Project" 
+                  alt="MIXED
+                  COMMERCIAL" 
                   fill
                 />
               </div>
@@ -756,7 +769,7 @@ export default function BuildingDesignPage() {
             {/* Content Section - Right Side */}
             <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">Project Details</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">MIXED COMMERCIAL</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
 

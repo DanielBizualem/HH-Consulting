@@ -61,8 +61,8 @@ export default function EventsPage() {
             <Calendar size={14} />
             <span className="text-[10px] font-bold uppercase tracking-widest">Company Life</span>
           </div>
-          <h1 className="flex justify-center text-5xl md:text-6xl font-black tracking-tight mb-6 text-slate-900">
-            Events & <span className="text-blue-600 ml-3">Milestones</span>
+          <h1 className="flex flex-wrap justify-center text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-6 text-slate-900 text-center">
+            Events & <span className="text-blue-600 ml-2 md:ml-3">Milestones</span>
           </h1>
           <p className="flex justify-center text-slate-500 text-lg max-w-2xl leading-relaxed">
             Exploring the moments that define HH Consulting's culture and expertise.

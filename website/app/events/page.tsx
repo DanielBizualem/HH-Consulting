@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Calendar, MapPin, Presentation, Trees, HardHat, ArrowRight } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
 // --- SITE IMAGES (.png) ---
 import site01 from '@/public/site01.png'
 import site02 from '@/public/site02.png'
@@ -50,6 +51,7 @@ const events = [
 export default function EventsPage() {
   return (
     <main className="min-h-screen bg-white pb-20">
+
       {/* Updated Header: White background with subtle slate border */}
       <header className="pt-30  bg-gradient-to-b from-slate-50 to-white border-b border-slate-100 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-[0.03]">

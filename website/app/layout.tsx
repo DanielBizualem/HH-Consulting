@@ -1,9 +1,10 @@
 // app/layout.tsx
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import Navbar from "@/components/Navbar";
 import TopLoader from "@/components/TopLoader";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { Suspense } from 'react';
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +21,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased bg-white text-slate-900`}>
-        <TopLoader/>
-        <Navbar />
+      <Suspense fallback={null}>
+          <TopLoader />
+        </Suspense>
+        <Suspense fallback={<div className="h-20" />}>
+          <Navbar />
+        </Suspense>
         {/* The transition class is applied here */}
         <main className="page-transition">
+        <Suspense fallback={<div>Loading...</div>}>   {/* ← Add this */}
           {children}
+        </Suspense>
         </main>
       </body>
     </html>

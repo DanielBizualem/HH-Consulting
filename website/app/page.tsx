@@ -312,7 +312,7 @@ export default function HomePage() {
           
           <div className="flex flex-col gap-8">
             <div className="h-64 md:h-80 bg-slate-800 rounded-sm border border-slate-700 overflow-hidden shadow-2xl">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.534062301304!2d38.78729227354948!3d9.01494848921175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8593c43bc077%3A0x564b837fcf22503e!2sEfrata%20building!5e0!3m2!1sen!2set!4v1775898824454!5m2!1sen!2set" width="600" height="450" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.534062301304!2d38.78729227354948!3d9.01494848921175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8593c43bc077%3A0x564b837fcf22503e!2sEfrata%20building!5e0!3m2!1sen!2set!4v1775898824454!5m2!1sen!2set" width="600" height="450" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <div className="pt-4">

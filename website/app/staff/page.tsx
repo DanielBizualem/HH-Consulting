@@ -1,11 +1,33 @@
-import React from 'react';
-import Image from 'next/image';
+"use client"
+import React, { useState } from 'react';
+import Image,{ ImageProps } from 'next/image';
 import { Users, Lightbulb, Award, Star,Wallet } from 'lucide-react';
 
 // Images - update these paths to your project structure
 import recognition from '../../public/staff_recognition.png';
 import paymentDept from '../../public/payement_dept.png';
 import designDept from '../../public/design_dept.png';
+
+const ImageWithLoader = (props: ImageProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div className="relative w-full h-full min-h-[50px] flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100/50 z-10">
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-600 animate-pulse">
+            Loading...
+          </span>
+        </div>
+      )}
+      <Image
+        {...props}
+        onLoadingComplete={() => setIsLoading(false)}
+        className={`${props.className} ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+      />
+    </div>
+  );
+};
 
 export default function StaffPage() {
   return (
@@ -53,7 +75,7 @@ export default function StaffPage() {
           
           {/* Design Department Image */}
           <div className="lg:col-span-7 relative aspect-[16/9] rounded-2xl overflow-hidden border border-slate-100 shadow-2xl shadow-slate-200">
-            <Image 
+            <ImageWithLoader 
               src={designDept}
               alt="Design Department at work"
               fill
@@ -66,7 +88,7 @@ export default function StaffPage() {
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           {/* Payment Department Image */}
           <div className="lg:col-span-7 relative aspect-[16/9] rounded-2xl overflow-hidden border border-slate-100 shadow-2xl shadow-slate-200">
-            <Image 
+            <ImageWithLoader 
               src={paymentDept}
               alt="Payment Department processing"
               fill
@@ -116,7 +138,7 @@ export default function StaffPage() {
           
           {/* Image - now with professional borders and shadows */}
           <div className="lg:col-span-7 relative aspect-[16/9] rounded-[2.5rem] overflow-hidden border border-slate-700 shadow-[0_30px_70px_rgba(59,130,246,0.1)]">
-            <Image 
+            <ImageWithLoader 
               src={recognition}
               alt="HH Consulting Staff Recognition Ceremony"
               fill

@@ -1,9 +1,31 @@
 "use client";
-import React from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
+import Image,{ ImageProps } from 'next/image';
 import { Calendar, MapPin, Presentation, Trees, HardHat, ArrowRight } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+
+const ImageWithLoader = (props: ImageProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div className="relative w-full h-full min-h-[50px] flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100/50 z-10">
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-600 animate-pulse">
+            Loading...
+          </span>
+        </div>
+      )}
+      <Image
+        {...props}
+        onLoadingComplete={() => setIsLoading(false)}
+        className={`${props.className} ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+      />
+    </div>
+  );
+};
+
 // --- SITE IMAGES (.png) ---
 import site01 from '@/public/site01.png'
 import site02 from '@/public/site02.png'
@@ -94,7 +116,7 @@ export default function EventsPage() {
                     className={`relative overflow-hidden rounded-xl bg-slate-100 border border-slate-200 group-hover:shadow-xl transition-all duration-500 
                       ${i === 0 ? 'lg:col-span-2 lg:row-span-2 aspect-[4/3] lg:aspect-auto' : 'aspect-square'}`}
                   >
-                    <Image
+                    <ImageWithLoader
                       src={img}
                       alt={`${event.title} - ${i}`}
                       fill

@@ -19,43 +19,43 @@ import {
   ChevronRight
 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image,{ ImageProps } from 'next/image';
 
-// Slideshow Imports
-import slide01 from '../public/01.png'
-import slide02 from '../public/02.png'
-import slide03 from '../public/03.png'
-import slide04 from '../public/04.png'
-import slide05 from '../public/05.png'
 
-import facebook from '../public/facebookIcon.png'
-import youtube from '../public/youtubeIcon01.png'
-import twitter from '../public/twitterIcon.png'
-import linkedin from '../public/linkedinIcon.png'
+const slide01 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776067690/01_b2dwqc.png'
+const slide02 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776068337/02_c1hfzw.png'
+const slide03 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065501/03_s2lall.png'
+const slide04 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065507/04_qtg4ka.png'
+const slide05 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065527/05_nyk5tt.png'
 
-import tower from '../public/kebede-tower.png'
-import airline from '../public/airline.png'
-import airline2 from '../public/airline02.png'
-import certificate03 from '../public/certificate03.png'
-import certificate04 from '../public/certificate04.png'
-import certificate05 from '../public/certificate05.png'
-import certificate06 from '../public/certificate06.png'
-import haramaya from '../public/haramaya.png'
-import addis from '../public/addis.png'
-import bule from '../public/bule.jpeg'
-import central from '../public/central.png'
-import ethioairline from '../public/ethioairline.png'
-import insa from '../public/niss.png'
-import sam from '../public/sam.png'
-import city from '../public/city.jpeg'
-import experiance from '../public/experiance.jpeg'
-import nurbelay from '../public/nurbelay.jpeg'
-import eco from '../public/eco.jpeg'
-import habesha from '../public/habesha.jpeg'
-import remeda from '../public/remeda.png'
-import ecole from '../public/ecole.jpeg'
-import rift from '../public/riftvalley.jpeg'
-import elsewedy from '../public/elsewedy.jpeg'
+const facebook = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065499/facebookIcon_ykqzvg.png'
+const youtube = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065768/youtubeIcon01_bo9il6.png'
+const twitter = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065768/twitterIcon_zuysqm.png'
+const linkedin = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065513/linkedinIcon_vxqebf.png'
+
+const tower = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776068942/kebede_aapsef.png'
+const airline = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065463/airline_exattr.png'
+const airline2 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065490/airline02_qmkpb3.png'
+const certificate03 = 'https://res.cloudinary.com/djxfy60tt/image/upload/q_auto/f_auto/v1776065831/certificate03_jmsuk0.png'
+const certificate04 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065468/certificate04_ixqnru.png'
+const certificate05 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065478/certificate05_efwwog.png'
+const certificate06 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065512/certificate06_d8yiiy.png'
+const haramaya = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065509/haramaya_v6ls3p.png'
+const addis = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065450/addis_hie23t.png'
+const bule = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065770/bule_faqzdf.jpg'
+const central = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065769/central_cyfltn.png'
+const ethioairline = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065497/ethioairline_hjydfn.png'
+const insa = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065515/niss_rrwhix.png'
+const sam = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065724/sam_grfilx.png'
+const city = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065482/city_yl0ays.jpg'
+const experiance = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065498/experiance_ivwkno.jpg'
+const nurbelay = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065515/nurbelay_knnjzg.jpg'
+const eco = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065491/eco_astaj2.jpg'
+const habesha = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065508/habesha_ztaco5.jpg'
+const remeda = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065722/remeda_iez8tk.png'
+const ecole = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065494/ecole_xkd8hs.jpg'
+const rift = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065724/riftvalley_hafagl.jpg'
+const elsewedy = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065495/elsewedy_rjthxq.jpg'
 
 const slides = [
   { src: slide01, title: "Dr. Ali Birra Comprehensive Hospital", location: "Innovative Healthcare Infrastructure", },
@@ -100,6 +100,27 @@ const socialMedia = [
   {src:linkedin, alt:'linkedin'},
 ]
 
+const ImageWithLoader = (props: ImageProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div className="relative w-full h-full min-h-[50px] flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100/50 z-10">
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-600 animate-pulse">
+            Loading...
+          </span>
+        </div>
+      )}
+      <Image
+        {...props}
+        onLoadingComplete={() => setIsLoading(false)}
+        className={`${props.className} ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+      />
+    </div>
+  );
+};
+
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -125,7 +146,7 @@ export default function HomePage() {
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <Image
+            <ImageWithLoader
               src={slide.src}
               alt={slide.title}
               fill
@@ -193,7 +214,7 @@ export default function HomePage() {
           </div>
 
           <div className="relative h-[300px] md:h-[450px] lg:h-auto rounded-sm overflow-hidden border border-slate-100 shadow-md order-1 lg:order-2">
-            <Image 
+            <ImageWithLoader 
               src={tower} 
               alt="HH Consulting Architects project" 
               fill
@@ -265,7 +286,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {certificates.map((cert, index) => (
               <div key={index} className="group relative aspect-[4/3] bg-white border border-slate-200 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center p-6">
-                <Image src={cert.src} alt={cert.alt} fill className="object-contain p-4" />
+                <ImageWithLoader src={cert.src} alt={cert.alt} fill className="object-contain p-4" />
                 <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-slate-800 bg-white/95 px-2 py-1 shadow-sm truncate w-full">
                     {cert.alt}
@@ -289,7 +310,7 @@ export default function HomePage() {
             {partners.map((partner, index) => (
               <div key={index} className="group bg-white w-[140px] h-[100px] md:w-[200px] md:h-[140px] flex items-center justify-center p-4 border border-slate-200 rounded-sm shadow-sm transition-all hover:shadow-lg">
                 <div className="relative w-full h-full">
-                  <Image src={partner.src} alt={partner.alt} fill className="object-contain transition-all duration-500 scale-90 group-hover:scale-100" />
+                  <ImageWithLoader src={partner.src} alt={partner.alt} fill className="object-contain transition-all duration-500 scale-90 group-hover:scale-100" />
                 </div>
               </div>
             ))}

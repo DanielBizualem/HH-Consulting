@@ -8,6 +8,21 @@ const recognition = 'https://res.cloudinary.com/djxfy60tt/image/upload/v17760658
 const paymentDept = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065590/payement_dept_rbdpqz.png';
 const designDept = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065576/design_dept_nqbogc.png';
 
+const general_manager = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111899/general_manager_kbctoq.png'
+const deputy = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111904/dupy_general_manager_xbfrqp.png'
+const receptionist01 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111885/receptionist_bqpgce.png'
+const receptionist02 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111880/receptionist01_jwm6xm.png'
+const staff_members = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111903/staff_member_vhs8ea.png'
+
+const staff = [
+  {src:general_manager,alt:"general_manager"},
+  {src:deputy,alt:'deputy_general_manager'},
+  {src:receptionist01,alt:'receptionist01'},
+  {src:receptionist02,alt:'receptionist02'},
+  {src:staff_members,alt:'staff_members'},
+]
+
+
 const ImageWithLoader = (props: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -57,7 +72,41 @@ export default function StaffPage() {
 
       {/* 2. Department Sections Grid */}
       <section className="px-6 lg:px-20 py-24 max-w-7xl mx-auto space-y-24">
-        
+      <div className="space-y-16">
+  {/* FIRST LINE: Executive Leadership */}
+  <div className="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
+    {staff.filter(m => m.alt.includes('manager')).map((member, index) => (
+      <div key={index} className="flex-1 group">
+        <StaffCard member={member} label="Leadership" />
+      </div>
+    ))}
+  </div>
+
+  {/* SECOND LINE: Front Office / Administration */}
+  <div className="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
+    {staff.filter(m => m.alt.includes('receptionist')).map((member, index) => (
+      <div key={index} className="flex-1 group">
+        <StaffCard member={member} label="Administration" />
+      </div>
+    ))}
+  </div>
+
+  {/* THIRD LINE: Technical Team / Staff */}
+  <div className="flex justify-center max-w-5xl mx-auto">
+    {staff.filter(m => m.alt.includes('staff_member')).map((member, index) => (
+      <div key={index} className="w-full group">
+        <div className="relative aspect-video overflow-hidden rounded-sm border border-slate-200">
+          <ImageWithLoader 
+            src={member.src}
+            alt={member.alt}
+            fill
+            className=" transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           {/* Design Department Text */}
           <div className="lg:col-span-5 space-y-6">
@@ -168,6 +217,27 @@ export default function StaffPage() {
               </p>
           </div>
       </section>
+
+      
     </main>
+  );
+}
+
+/* Reusable Sub-Component for individual cards */
+function StaffCard({ member, label }: { member: any, label: string }) {
+  return (
+    <div className="relative aspect-square overflow-hidden bg-slate-50 border border-slate-100 transition-all duration-500 hover:border-blue-200">
+      <ImageWithLoader 
+        src={member.src}
+        alt={member.alt}
+        fill
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+        <p className="text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">{label}</p>
+        <p className="text-white text-xs font-medium uppercase tracking-widest">
+          {member.alt.replace(/_/g, ' ')}
+        </p>
+      </div>
+    </div>
   );
 }

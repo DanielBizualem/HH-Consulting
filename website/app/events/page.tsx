@@ -43,6 +43,7 @@ const presentation04 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v17760
 const kuriftu01 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065596/kuriftu01_c7qeds.png'
 const kuriftu02 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065560/kuriftu02_dteg5h.png'
 
+
 const events = [
   {
     category: "Technical Excellence",

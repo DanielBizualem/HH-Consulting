@@ -46,6 +46,7 @@ const table06 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065766/t
 const project07 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065654/project07_whagmp.png'
 const table07 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065767/table07_mohqp9.png'
 const project08 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065676/project08_unv8ym.png'
+const project09 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065669/project09_moarck.png'
 const project10 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065690/project10_squgnx.png'
 const project11 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065703/project11_b5eovz.png'
 const project12 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065709/project12_l7ljzi.png'
@@ -219,8 +220,7 @@ export default function BuildingDesignPage() {
 
           {showMore && (
             <div className="space-y-32">
-              {/* PROJECTS 13 and onwards go here */}
-              {/* Project 13 */}
+              
               <div className="grid lg:grid-cols-12 gap-12 items-center group">
                 {/* ... your existing Project 13 code ... */}
               </div>
@@ -266,6 +266,45 @@ export default function BuildingDesignPage() {
               />
             </div>
              </div>
+             {/** Project 09 */}
+             <div className="grid lg:grid-cols-12 gap-12 items-center group">
+                <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
+                  <ImageWithLoader 
+                    src={project09} 
+                    alt="ECOLE DES LUMIERES" 
+                    fill
+                  />
+                </div>
+                  <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-black text-slate-900 tracking-tight">ECOLE DES LUMIERES SCHOOL</h3>
+                      <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+                    </div>
+
+                    <div className="space-y-4">
+                      {[
+                        { label: "Country", value: " Djibouti" },
+                        { label: "Location", value: "Rep de Djibouti" },
+                        { label: "Client", value: "Ecole des Lumieres" },
+                        { label: "Staff Provided", value: "Architects, Engineers, and CAD experts" },
+                        { label: "Team Size", value: "10" },
+                        { label: "Duration", value: " a minimum of 2 Months till completion" },
+                        {label:"Start Date",value:"June, 2020"},
+                        { label: "Service Value", value: " USD 25,000" },
+                        { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                            {item.label}
+                          </span>
+                          <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                            {item.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+              </div>
 
               <div className="grid lg:grid-cols-12 gap-12 items-center group">
                 <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">

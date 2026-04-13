@@ -1,7 +1,14 @@
 "use client"
-import { Maximize2, Layers, Compass, Ruler } from 'lucide-react';
+import { Maximize2, Layers, Compass, Ruler,ChevronDown, ChevronUp } from 'lucide-react';
 import Image,{ ImageProps } from 'next/image';
 import { useState } from 'react';
+import Infrastructure from '@/components/Infrastructure';
+import TerminalDesign from '@/components/TerminalDesign';
+import Road from '@/components/Road';
+import Irrigation from '@/components/Irrigation';
+import Bridge from '@/components/Bridge';
+import Others from '@/components/Other';
+const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776110480/favicon-Photoroom_a5bibi.png'
 
 const ImageWithLoader = (props: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,8 +62,9 @@ const project22 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065750
 
 
 export default function BuildingDesignPage() {
+  const [showMore, setShowMore] = useState(false);
   return (
-    <main className="min-h-screen bg-white pt-32 pb-20">
+    <main className="min-h-screen bg-white pt-32">
       <div className="px-6 lg:px-20 max-w-7xl mx-auto">
         
         {/* Header Section */}
@@ -102,7 +110,7 @@ export default function BuildingDesignPage() {
         </section>
 
         {/* 2. PROJECT GALLERY */}
-        <section className="space-y-32">
+    <section className="space-y-32">
           
           {/* Project 01 */}
           <div className="grid lg:grid-cols-12 gap-12 items-center group">
@@ -188,7 +196,7 @@ export default function BuildingDesignPage() {
           </div>
 
           {/* PROJECT 07 */}
-            <div className="grid lg:grid-cols-12 gap-12 items-center group">
+          <div className="grid lg:grid-cols-12 gap-12 items-center group">
               <div className="lg:col-span-7 aspect-[16/10] relative rounded-xl overflow-hidden">
                 <ImageWithLoader 
                   src={project07} 
@@ -206,10 +214,19 @@ export default function BuildingDesignPage() {
                   className="rounded-lg" 
                 />
               </div>
-            </div>
-            {/** 1 */}
-            <div className="grid lg:grid-cols-12 gap-12 items-center group">
-  {/* Content Section - LEFT Side */}
+          </div>
+
+
+          {showMore && (
+            <div className="space-y-32">
+              {/* PROJECTS 13 and onwards go here */}
+              {/* Project 13 */}
+              <div className="grid lg:grid-cols-12 gap-12 items-center group">
+                {/* ... your existing Project 13 code ... */}
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-12 items-center group">
+ 
             <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
               <div className="mb-6">
                 <h3 className="text-2xl font-black text-slate-900 tracking-tight">Haramaya Project Details</h3>
@@ -248,32 +265,199 @@ export default function BuildingDesignPage() {
                 className="object-cover" 
               />
             </div>
-          </div>
+             </div>
 
-          <div className="grid lg:grid-cols-12 gap-12 items-center group">
-            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
-              <ImageWithLoader 
-                src={project10} 
-                alt="NISS BUILDING" 
-                fill 
-                className="object-cover" 
-              />
-            </div>
+              <div className="grid lg:grid-cols-12 gap-12 items-center group">
+                <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
+                  <ImageWithLoader 
+                    src={project10} 
+                    alt="NISS BUILDING" 
+                    fill 
+                    className="object-cover" 
+                  />
+                </div>
+                  <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-black text-slate-900 tracking-tight">NISS BUILDING</h3>
+                      <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+                    </div>
+
+                    <div className="space-y-4">
+                      {[
+                        { label: "Country", value: "Ethiopia" },
+                        { label: "Location", value: "Addis Ababa" },
+                        { label: "Client", value: "Ethiopian Airline Group" },
+                        { label: "Staff Provided", value: "Architects, Resident Engineer, Mechanical Engineer, Project Engineer, Structural Engineer, Sanitary Engineer, Electrical Engineer, Electromechanical Office Engineer, Forman" },
+                        { label: "Team Size", value: "54 Engineer Professionals" },
+                        { label: "Duration", value: "5 Months" },
+                        { label: "Service Value", value: "Bir- R:7,903,83.19" },
+                        { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                            {item.label}
+                          </span>
+                          <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                            {item.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-12 items-center group">
+                {/* Content Section - LEFT Side */}
+                <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-black text-slate-900 tracking-tight">CITY LIGHT REAL STATE</h3>
+                    <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { label: "Country", value: "Ethiopia" },
+                      { label: "Location", value: "Addis Ababa, Around Jemo" },
+                      { label: "Client", value: "CITY LIGHT" },
+                      { label: "Staff Provided", value: "Architects and Engineers" },
+                      { label: "Team Size", value: "9 Professionals" },
+                      { label: "Start Date", value: "MARCH 2016" },
+                      { label: "Duration", value: "Three Months for design" },
+                      { label: "Service Value", value: "ONE BILLION" },
+                      { label: "Associated Consultants", value: "HH Consulting" },
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                          {item.label}
+                        </span>
+                        <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                          {item.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Image Section - RIGHT Side */}
+                <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
+                  <ImageWithLoader 
+                    src={project11} 
+                    alt="CITY LIGHT REAL STATE" 
+                    fill 
+                    className="object-cover" 
+                  />
+                </div>
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-12 items-center group">
+                <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
+                  <ImageWithLoader 
+                    src={project12} 
+                    alt="GREENLAND AND TOUR HOTEL PLC." 
+                    fill 
+                    className="object-cover" 
+                  />
+                </div>
+
+                {/* Content Section - Right Side */}
+                <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-black text-slate-900 tracking-tight">GREENLAND AND TOUR HOTEL PLC.</h3>
+                    <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+                  </div>
+
+                  <div className="space-y-4">
+                    {[
+                      { label: "Country", value: "Ethiopia" },
+                      { label: "Location", value: "Addis Ababa" },
+                      { label: "Client", value: "Greenland Tour and Hotel PLC" },
+                      { label: "Staff Provided", value: "Architects and CAD Experts" },
+                      { label: "Team Size", value: "09 Professionals" },
+                      { label: "Start Date", value: "July 2015" },
+                      { label: "Duration", value: "One Month" },
+                      { label: "Service Value", value: "Birr: 19,000,000" },
+                      { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                          {item.label}
+                        </span>
+                        <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                          {item.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-12 items-center group">
+                <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-black text-slate-900 tracking-tight">BULE HORA UNIVERSITY INT. STADIUM</h3>
+                    <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { label: "Country", value: "Ethiopia" },
+                      { label: "Location", value: "Oromia, Bulehora" },
+                      { label: "Client", value: "Bule Hora" },
+                      { label: "Staff Provided", value: "Architects, Engineers, and CAD Experts" },
+                      { label: "Team Size", value: "9 Professionals" },
+                      { label: "Start Date", value: "April 2022" },
+                      { label: "Duration", value: "Four Months for Design" },
+                      { label: "Service Value", value: "4 Billion" },
+                      { label: "Associated Consultants", value: "HH Consulting" },
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                          {item.label}
+                        </span>
+                        <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                          {item.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Image Section - RIGHT Side */}
+                <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2"> {/* order-2 on desktop */}
+                  <ImageWithLoader 
+                    src={project13} 
+                    alt="BULE HORA UNIVERSITY INT. STADIUM" 
+                    fill 
+                    className="object-cover" 
+                  />
+                </div>
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-12 items-center group">
+              <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
+                <ImageWithLoader 
+                  src={project14} 
+                  alt="BULE HORA UNIVERSITY" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+
+              {/* Content Section - Right Side */}
               <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
                 <div className="mb-6">
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">NISS BUILDING</h3>
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">BULE HORA UNIVERSITY</h3>
                   <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
                 </div>
 
                 <div className="space-y-4">
                   {[
                     { label: "Country", value: "Ethiopia" },
-                    { label: "Location", value: "Addis Ababa" },
-                    { label: "Client", value: "Ethiopian Airline Group" },
-                    { label: "Staff Provided", value: "Architects, Resident Engineer, Mechanical Engineer, Project Engineer, Structural Engineer, Sanitary Engineer, Electrical Engineer, Electromechanical Office Engineer, Forman" },
-                    { label: "Team Size", value: "54 Engineer Professionals" },
-                    { label: "Duration", value: "5 Months" },
-                    { label: "Service Value", value: "Bir- R:7,903,83.19" },
+                    { label: "Location", value: "Bulehora" },
+                    { label: "Client", value: "Bule Hora University" },
+                    { label: "Staff Provided", value: "Architects, Engineers, and CAD Experts" },
+                    { label: "Team Size", value: "09 Professionals" },
+                    { label: "Start Date", value: "April 2019" },
+                    { label: "Duration", value: "One Month" },
+                    { label: "Service Value", value: "7 Billion" },
                     { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
                   ].map((item, idx) => (
                     <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
@@ -287,55 +471,54 @@ export default function BuildingDesignPage() {
                   ))}
                 </div>
               </div>
-           </div>
+            </div>
 
-           <div className="grid lg:grid-cols-12 gap-12 items-center group">
-            {/* Content Section - LEFT Side */}
-            <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
-              <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">CITY LIGHT REAL STATE</h3>
-                <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+            <div className="grid lg:grid-cols-12 gap-12 items-center group">
+              <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
+                <div className="mb-6">
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">BIRHANU AMARE MIXED-USE</h3>
+                  <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+                </div>
+                <div className="space-y-4">
+                  {[
+                    { label: "Country", value: "Ethiopia" },
+                    { label: "Location", value: "Addis Ababa" },
+                    { label: "Client", value: "Birhanu Amare" },
+                    { label: "Staff Provided", value: "Architects and CAD experts" },
+                    { label: "Team Size", value: "9 Professionals" },
+                    { label: "Start Date", value: "July 2015" },
+                    { label: "Duration", value: "ONE Months" },
+                    { label: "Service Value", value: "Birr: 520,020,080" },
+                    { label: "Associated Consultants", value: "HH Consulting" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        {item.label}
+                      </span>
+                      <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                        {item.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="space-y-4">
-                {[
-                  { label: "Country", value: "Ethiopia" },
-                  { label: "Location", value: "Addis Ababa, Around Jemo" },
-                  { label: "Client", value: "CITY LIGHT" },
-                  { label: "Staff Provided", value: "Architects and Engineers" },
-                  { label: "Team Size", value: "9 Professionals" },
-                  { label: "Start Date", value: "MARCH 2016" },
-                  { label: "Duration", value: "Three Months for design" },
-                  { label: "Service Value", value: "ONE BILLION" },
-                  { label: "Associated Consultants", value: "HH Consulting" },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      {item.label}
-                    </span>
-                    <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                      {item.value}
-                    </span>
-                  </div>
-                ))}
+
+              {/* Image Section - RIGHT Side */}
+              <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
+                <ImageWithLoader 
+                  src={project15} 
+                  alt="BIRHANU AMARE MIXED-USE" 
+                  fill 
+                  className="object-cover" 
+                />
               </div>
             </div>
 
-            {/* Image Section - RIGHT Side */}
-            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
-              <ImageWithLoader 
-                src={project11} 
-                alt="CITY LIGHT REAL STATE" 
-                fill 
-                className="object-cover" 
-              />
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-12 gap-12 items-center group">
+            <div className="grid lg:grid-cols-12 gap-12 items-center group">
             <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
               <ImageWithLoader 
-                src={project12} 
-                alt="GREENLAND AND TOUR HOTEL PLC." 
+                src={project16} 
+                alt="BM HOUSING CORPORATION" 
                 fill 
                 className="object-cover" 
               />
@@ -344,20 +527,20 @@ export default function BuildingDesignPage() {
             {/* Content Section - Right Side */}
             <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">GREENLAND AND TOUR HOTEL PLC.</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">BM HOUSING CORPORATION</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
 
               <div className="space-y-4">
                 {[
                   { label: "Country", value: "Ethiopia" },
-                  { label: "Location", value: "Addis Ababa" },
-                  { label: "Client", value: "Greenland Tour and Hotel PLC" },
-                  { label: "Staff Provided", value: "Architects and CAD Experts" },
+                  { label: "Location", value: "Addis Abeba" },
+                  { label: "Client", value: "BM Housing Corporation 3B+G+12" },
+                  { label: "Staff Provided", value: "Architects and CAD experts" },
                   { label: "Team Size", value: "09 Professionals" },
-                  { label: "Start Date", value: "July 2015" },
+                  { label: "Start Date", value: "July 2017" },
                   { label: "Duration", value: "One Month" },
-                  { label: "Service Value", value: "Birr: 19,000,000" },
+                  { label: "Service Value", value: "Birr: 10,000,000" },
                   { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
                 ].map((item, idx) => (
                   <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
@@ -376,19 +559,17 @@ export default function BuildingDesignPage() {
           <div className="grid lg:grid-cols-12 gap-12 items-center group">
             <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
               <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">BULE HORA UNIVERSITY INT. STADIUM</h3>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">HOTEL APARTMENT</h3>
                 <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
               <div className="space-y-4">
                 {[
                   { label: "Country", value: "Ethiopia" },
-                  { label: "Location", value: "Oromia, Bulehora" },
-                  { label: "Client", value: "Bule Hora" },
-                  { label: "Staff Provided", value: "Architects, Engineers, and CAD Experts" },
-                  { label: "Team Size", value: "9 Professionals" },
-                  { label: "Start Date", value: "April 2022" },
-                  { label: "Duration", value: "Four Months for Design" },
-                  { label: "Service Value", value: "4 Billion" },
+                  { label: "Location", value: "Addis Ababa" },
+                  { label: "Client", value: "Ato Asebe" },
+                  { label: "Staff Provided", value: "architects, Engineers, And Cad Experts" },
+                  { label: "Team Size", value: "No Staff" },
+                  { label: "Duration", value: "A Minimum Of 2 Months Till Completion" },
                   { label: "Associated Consultants", value: "HH Consulting" },
                 ].map((item, idx) => (
                   <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
@@ -404,10 +585,10 @@ export default function BuildingDesignPage() {
             </div>
 
             {/* Image Section - RIGHT Side */}
-            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2"> {/* order-2 on desktop */}
+            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
               <ImageWithLoader 
-                src={project13} 
-                alt="BULE HORA UNIVERSITY INT. STADIUM" 
+                src={project17} 
+                alt="HOTEL APARTMENT" 
                 fill 
                 className="object-cover" 
               />
@@ -415,398 +596,281 @@ export default function BuildingDesignPage() {
           </div>
 
           <div className="grid lg:grid-cols-12 gap-12 items-center group">
-          <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
-            <ImageWithLoader 
-              src={project14} 
-              alt="BULE HORA UNIVERSITY" 
-              fill 
-              className="object-cover" 
-            />
-          </div>
-
-          {/* Content Section - Right Side */}
-          <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
-            <div className="mb-6">
-              <h3 className="text-2xl font-black text-slate-900 tracking-tight">BULE HORA UNIVERSITY</h3>
-              <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
+              <ImageWithLoader 
+                src={project18} 
+                alt="MERKATO MIXED-USE" 
+                fill 
+                className="object-cover" 
+              />
             </div>
 
-            <div className="space-y-4">
-              {[
-                { label: "Country", value: "Ethiopia" },
-                { label: "Location", value: "Bulehora" },
-                { label: "Client", value: "Bule Hora University" },
-                { label: "Staff Provided", value: "Architects, Engineers, and CAD Experts" },
-                { label: "Team Size", value: "09 Professionals" },
-                { label: "Start Date", value: "April 2019" },
-                { label: "Duration", value: "One Month" },
-                { label: "Service Value", value: "7 Billion" },
-                { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
-              ].map((item, idx) => (
-                <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    {item.label}
-                  </span>
-                  <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                    {item.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+            {/* Content Section - Right Side */}
+            <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
+              <div className="mb-6">
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">MERKATO MIXED-USE</h3>
+                <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+              </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 items-center group">
-          <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
-            <div className="mb-6">
-              <h3 className="text-2xl font-black text-slate-900 tracking-tight">BIRHANU AMARE MIXED-USE</h3>
-              <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
-            </div>
-            <div className="space-y-4">
-              {[
-                { label: "Country", value: "Ethiopia" },
-                { label: "Location", value: "Addis Ababa" },
-                { label: "Client", value: "Birhanu Amare" },
-                { label: "Staff Provided", value: "Architects and CAD experts" },
-                { label: "Team Size", value: "9 Professionals" },
-                { label: "Start Date", value: "July 2015" },
-                { label: "Duration", value: "ONE Months" },
-                { label: "Service Value", value: "Birr: 520,020,080" },
-                { label: "Associated Consultants", value: "HH Consulting" },
-              ].map((item, idx) => (
-                <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    {item.label}
-                  </span>
-                  <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                    {item.value}
-                  </span>
-                </div>
-              ))}
+              <div className="space-y-4">
+                {[
+                  { label: "Country", value: "Ethiopia" },
+                  { label: "Location", value: "Addis Abeba" },
+                  { label: "Client", value: "Ato Getachew" },
+                  { label: "Staff Provided", value: "architects, Engineers, And Cad Experts" },
+                  { label: "Team Size", value: "No staff" },
+                  { label: "Duration", value: "A Minimum Of 2 Months Till Completion" },
+                  { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      {item.label}
+                    </span>
+                    <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Image Section - RIGHT Side */}
-          <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
-            <ImageWithLoader 
-              src={project15} 
-              alt="BIRHANU AMARE MIXED-USE" 
-              fill 
-              className="object-cover" 
-            />
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-12 items-center group">
-        <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
-          <ImageWithLoader 
-            src={project16} 
-            alt="BM HOUSING CORPORATION" 
-            fill 
-            className="object-cover" 
-          />
-        </div>
-
-        {/* Content Section - Right Side */}
-        <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
-          <div className="mb-6">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tight">BM HOUSING CORPORATION</h3>
-            <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
-          </div>
-
-          <div className="space-y-4">
-            {[
-              { label: "Country", value: "Ethiopia" },
-              { label: "Location", value: "Addis Abeba" },
-              { label: "Client", value: "BM Housing Corporation 3B+G+12" },
-              { label: "Staff Provided", value: "Architects and CAD experts" },
-              { label: "Team Size", value: "09 Professionals" },
-              { label: "Start Date", value: "July 2017" },
-              { label: "Duration", value: "One Month" },
-              { label: "Service Value", value: "Birr: 10,000,000" },
-              { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  {item.label}
-                </span>
-                <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                  {item.value}
-                </span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center group">
+            <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
+              <div className="mb-6">
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">HAZAL REAL STATE</h3>
+                <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="grid lg:grid-cols-12 gap-12 items-center group">
-        <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
-          <div className="mb-6">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tight">HOTEL APARTMENT</h3>
-            <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
-          </div>
-          <div className="space-y-4">
-            {[
-              { label: "Country", value: "Ethiopia" },
-              { label: "Location", value: "Addis Ababa" },
-              { label: "Client", value: "Ato Asebe" },
-              { label: "Staff Provided", value: "architects, Engineers, And Cad Experts" },
-              { label: "Team Size", value: "No Staff" },
-              { label: "Duration", value: "A Minimum Of 2 Months Till Completion" },
-              { label: "Associated Consultants", value: "HH Consulting" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  {item.label}
-                </span>
-                <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                  {item.value}
-                </span>
+              <div className="space-y-4">
+                {[
+                  { label: "Country", value: "Ethiopia" },
+                  { label: "Location", value: "Addis Ababa" },
+                  { label: "Client", value: "Hazal Real Esteat" },
+                  { label: "Staff Provided", value: "Architects and CAD experts" },
+                  { label: "Team Size", value: "9 Professionals" },
+                  { label: "Start Date", value: "DEC 2017" },
+                  { label: "Duration", value: "ONE Months" },
+                  { label: "Service Value", value: "Birr: 19,000,000" },
+                  { label: "Associated Consultants", value: "HH Consulting" },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      {item.label}
+                    </span>
+                    <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* Image Section - RIGHT Side */}
-        <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
-          <ImageWithLoader 
-            src={project17} 
-            alt="HOTEL APARTMENT" 
-            fill 
-            className="object-cover" 
-          />
-        </div>
-      </div>
-
-      <div className="grid lg:grid-cols-12 gap-12 items-center group">
-        <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
-          <ImageWithLoader 
-            src={project18} 
-            alt="MERKATO MIXED-USE" 
-            fill 
-            className="object-cover" 
-          />
-        </div>
-
-        {/* Content Section - Right Side */}
-        <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
-          <div className="mb-6">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tight">MERKATO MIXED-USE</h3>
-            <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+            {/* Image Section - RIGHT Side */}
+            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
+              <ImageWithLoader 
+                src={project19} 
+                alt="HAZAL REAL STATE" 
+                fill 
+                className="object-cover" 
+              />
+            </div>
           </div>
 
-          <div className="space-y-4">
-            {[
-              { label: "Country", value: "Ethiopia" },
-              { label: "Location", value: "Addis Abeba" },
-              { label: "Client", value: "Ato Getachew" },
-              { label: "Staff Provided", value: "architects, Engineers, And Cad Experts" },
-              { label: "Team Size", value: "No staff" },
-              { label: "Duration", value: "A Minimum Of 2 Months Till Completion" },
-              { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  {item.label}
-                </span>
-                <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                  {item.value}
-                </span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center group">
+            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
+              <ImageWithLoader 
+                src={project20} 
+                alt="BM HOUSING PLC" 
+                fill 
+                className="object-cover" 
+              />
+            </div>
+
+            {/* Content Section - Right Side */}
+            <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
+              <div className="mb-6">
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">BM HOUSING PLC</h3>
+                <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      <div className="grid lg:grid-cols-12 gap-12 items-center group">
-        <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
-          <div className="mb-6">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tight">HAZAL REAL STATE</h3>
-            <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
-          </div>
-          <div className="space-y-4">
-            {[
-              { label: "Country", value: "Ethiopia" },
-              { label: "Location", value: "Addis Ababa" },
-              { label: "Client", value: "Hazal Real Esteat" },
-              { label: "Staff Provided", value: "Architects and CAD experts" },
-              { label: "Team Size", value: "9 Professionals" },
-              { label: "Start Date", value: "DEC 2017" },
-              { label: "Duration", value: "ONE Months" },
-              { label: "Service Value", value: "Birr: 19,000,000" },
-              { label: "Associated Consultants", value: "HH Consulting" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  {item.label}
-                </span>
-                <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                  {item.value}
-                </span>
+              <div className="space-y-4">
+                {[
+                  { label: "Country", value: "Ethiopia" },
+                  { label: "Location", value: "Addis Abeba" },
+                  { label: "Client", value: "ASBATE PLC" },
+                  { label: "Staff Provided", value: "Architects and CAD experts" },
+                  { label: "Team Size", value: "09 Professionals" },
+                  { label: "Start Date", value: "MARCH 2015" },
+                  { label: "Duration", value: "Two Months" },
+                  { label: "Service Value", value: "Birr: 189,000,000" },
+                  { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      {item.label}
+                    </span>
+                    <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Image Section - RIGHT Side */}
-        <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
-          <ImageWithLoader 
-            src={project19} 
-            alt="HAZAL REAL STATE" 
-            fill 
-            className="object-cover" 
-          />
-        </div>
-      </div>
-
-      <div className="grid lg:grid-cols-12 gap-12 items-center group">
-        <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
-          <ImageWithLoader 
-            src={project20} 
-            alt="BM HOUSING PLC" 
-            fill 
-            className="object-cover" 
-          />
-        </div>
-
-        {/* Content Section - Right Side */}
-        <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
-          <div className="mb-6">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tight">BM HOUSING PLC</h3>
-            <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+            </div>
           </div>
 
-          <div className="space-y-4">
-            {[
-              { label: "Country", value: "Ethiopia" },
-              { label: "Location", value: "Addis Abeba" },
-              { label: "Client", value: "ASBATE PLC" },
-              { label: "Staff Provided", value: "Architects and CAD experts" },
-              { label: "Team Size", value: "09 Professionals" },
-              { label: "Start Date", value: "MARCH 2015" },
-              { label: "Duration", value: "Two Months" },
-              { label: "Service Value", value: "Birr: 189,000,000" },
-              { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  {item.label}
-                </span>
-                <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                  {item.value}
-                </span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center group">
+            <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
+              <div className="mb-6">
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">MERKATO COMMERCIAL</h3>
+                <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="grid lg:grid-cols-12 gap-12 items-center group">
-        <div className="lg:col-span-5 flex flex-col order-1"> {/* order-1 on desktop */}
-          <div className="mb-6">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tight">MERKATO COMMERCIAL</h3>
-            <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
-          </div>
-          <div className="space-y-4">
-            {[
-              { label: "Country", value: "Ethiopia" },
-              { label: "Location", value: "Addis Ababa" },
-              { label: "Client", value: "Ato Getachew" },
-              { label: "Staff Provided", value: "Architects, Engineers, and CAD Experts" },
-              { label: "Team Size", value: "No staff" },
-              { label: "Duration", value: "A Minimum Of 2 Months Till Completion" },
-              { label: "Associated Consultants", value: "HH Consulting" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  {item.label}
-                </span>
-                <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                  {item.value}
-                </span>
+              <div className="space-y-4">
+                {[
+                  { label: "Country", value: "Ethiopia" },
+                  { label: "Location", value: "Addis Ababa" },
+                  { label: "Client", value: "Ato Getachew" },
+                  { label: "Staff Provided", value: "Architects, Engineers, and CAD Experts" },
+                  { label: "Team Size", value: "No staff" },
+                  { label: "Duration", value: "A Minimum Of 2 Months Till Completion" },
+                  { label: "Associated Consultants", value: "HH Consulting" },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      {item.label}
+                    </span>
+                    <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* Image Section - RIGHT Side */}
-        <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
-          <ImageWithLoader 
-            src={project21} 
-            alt="MERKATO COMMERCIAL" 
-            fill 
-            className="object-cover" 
-          />
-        </div>
-      </div>
-
-      <div className="grid lg:grid-cols-12 gap-12 items-center group">
-        <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
-          <ImageWithLoader 
-            src={project22} 
-            alt="MIXED COMMERCIAL" 
-            fill 
-            className="object-cover" 
-          />
-        </div>
-
-        {/* Content Section - Right Side */}
-        <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
-          <div className="mb-6">
-            <h3 className="text-2xl font-black text-slate-900 tracking-tight">MIXED COMMERCIAL</h3>
-            <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
+            {/* Image Section - RIGHT Side */}
+            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2">
+              <ImageWithLoader 
+                src={project21} 
+                alt="MERKATO COMMERCIAL" 
+                fill 
+                className="object-cover" 
+              />
+            </div>
           </div>
 
-          <div className="space-y-4">
-            {[
-              { label: "Country", value: "Ethiopia" },
-              { label: "Location", value: "Addis Ababa; addis ketema subcity" },
-              { label: "Client", value: "Akebabi Malmat P.L.C" },
-              { label: "Staff Provided", value: "Contract Administrators, Resident Engineers, and Quantity surveyors" },
-              { label: "Team Size", value: "09" },
-              { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  {item.label}
-                </span>
-                <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
-                  {item.value}
-                </span>
+          <div className="grid lg:grid-cols-12 gap-12 items-center group">
+            <div className="lg:col-span-7 aspect-[16/10] bg-slate-100 overflow-hidden rounded-2xl shadow-xl border border-slate-100 relative order-2 lg:order-1">
+              <ImageWithLoader 
+                src={project22} 
+                alt="MIXED COMMERCIAL" 
+                fill 
+                className="object-cover" 
+              />
+            </div>
+
+            {/* Content Section - Right Side */}
+            <div className="lg:col-span-5 flex flex-col order-1 lg:order-2">
+              <div className="mb-6">
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">MIXED COMMERCIAL</h3>
+                <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
               </div>
-            ))}
+
+              <div className="space-y-4">
+                {[
+                  { label: "Country", value: "Ethiopia" },
+                  { label: "Location", value: "Addis Ababa; addis ketema subcity" },
+                  { label: "Client", value: "Akebabi Malmat P.L.C" },
+                  { label: "Staff Provided", value: "Contract Administrators, Resident Engineers, and Quantity surveyors" },
+                  { label: "Team Size", value: "09" },
+                  { label: "Associated Consultants", value: "HH Consulting Architects & Engineers" },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between border-b border-slate-50 pb-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      {item.label}
+                    </span>
+                    <span className="text-sm font-semibold text-slate-700 text-right max-w-[200px]">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-        
+    </div>
+          )}
 
+          <div className="flex justify-center">
+            <button
+              onClick={() => setShowMore(!showMore)}
+              className="group flex flex-col items-center gap-2 text-blue-600 font-bold tracking-widest uppercase text-xs transition-all hover:text-blue-800"
+            >
+              <span>{showMore ? "See Less" : "See More Projects"}</span>
+              <div className="w-10 h-10 rounded-full border-2 border-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
+                {showMore ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              </div>
+            </button>
+          </div>
+            
           
-
-        {/* 3. DESIGN SERVICES LIST */}
-        <section className="mt-40 bg-slate-900 text-white p-12 lg:p-20">
-          <h2 className="text-2xl font-light mb-12">Building Design Specialized Services</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <ul className="space-y-4 text-slate-400 text-sm italic">
-              <li>— Conceptual Design</li>
-              <li>— 3D Rendering & Visualization</li>
-              <li>— Schematic Design</li>
-            </ul>
-            <ul className="space-y-4 text-slate-400 text-sm italic">
-              <li>— Construction Documentation</li>
-              <li>— Building Information Modeling (BIM)</li>
-              <li>— Interior Architecture</li>
-            </ul>
-            <ul className="space-y-4 text-slate-400 text-sm italic">
-              <li>— Renovation & Retrofitting</li>
-              <li>— Landscape Integration</li>
-              <li>— Structural Systems Audit</li>
-            </ul>
-          </div>
+    </section>
+        {/** 3. Infrastructure */}
+        <section>
+        <Infrastructure/>
         </section>
-
+        {/* 4.Terminal Design*/}
+        <section>
+          <TerminalDesign/>
+        </section>
+        {/**5. Road Construction */}
+        <section>
+          <Road/>
+        </section>
+        {/**6.Irrigation Work */}
+        <section>
+          <Irrigation/>
+        </section>
+        {/**7. Bride design */}
+        <section>
+          <Bridge/>
+        </section>
+        {/** Others */}
+        <section>
+          <Others/>
+        </section>
+          
       </div>
+
+      <footer className="bg-[#1a364b] text-white py-20 px-6 flex flex-col items-center justify-center text-center mt-10">
+      {/* Logo Container */}
+      <div className="mb-8 relative w-20 h-20">
+        <Image 
+          src={logo} // Ensure your logo import matches this variable name
+          alt="HH Consulting Logo" 
+          fill 
+          className="object-contain brightness-0 invert" // Inverts to white if the original is dark
+        />
+      </div>
+
+      {/* Company Name English */}
+      <h2 className="text-lg md:text-xl font-medium tracking-[0.15em] uppercase mb-2">
+        HH Consulting Architects & Engineers PLC.
+      </h2>
+
+      {/* Company Name Amharic */}
+      <h2 className="text-xl md:text-2xl font-bold mb-12">
+        ኤች ኤች አማካሪ አርክቴክቶች እና መሐንዲሶች
+      </h2>
+
+      {/* Slogan */}
+      <p className="text-slate-300 text-base md:text-lg font-light italic tracking-wide">
+        "We create with heart, and build with mind"
+      </p>
+      
+      {/* Optional: Developer Credit / Copyright */}
+      <div className="mt-16 pt-8 border-t border-white/10 w-full max-w-4xl text-xs text-slate-500 uppercase tracking-[0.2em]">
+        © {new Date().getFullYear()} HH Consulting. All Rights Reserved.
+      </div>
+    </footer>
     </main>
   );
 }

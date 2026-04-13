@@ -299,50 +299,147 @@ export default function HomePage() {
       </section>
 
       {/* 5. CLIENTS */}
-      <section id="clients" className="w-full py-16 md:py-24 bg-slate-50 border-t border-gray-100">
-        <div className="w-full px-6 md:px-12 lg:px-20">
-          <div className="mb-12 text-center">
-            <h2 className="text-xl md:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-gray-400">
-              Partners & Potential Clients
+    <section id="clients" className="w-full py-16 md:py-24 bg-slate-50 border-t border-gray-100">
+      <div className="w-full px-6 md:px-12 lg:px-20">
+          <div className="mb-12 md:mb-16">
+            <h2 className="text-xl md:text-2xl font-medium tracking-[0.2em] md:tracking-[0.3em] uppercase text-slate-400">
+            Partners & Potential Clients
             </h2>
+            <div className="h-1 w-12 bg-blue-600 mt-4 rounded-full" />
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* Switched to grid: grid-cols-2 for mobile, md:grid-cols-4 or 5 for desktop */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {partners.map((partner, index) => (
-              <div key={index} className="group bg-white w-[140px] h-[100px] md:w-[200px] md:h-[140px] flex items-center justify-center p-4 border border-slate-200 rounded-sm shadow-sm transition-all hover:shadow-lg">
+              <div 
+                key={index}
+                className="group bg-white w-full h-[120px] md:h-[140px] flex items-center justify-center p-4 border border-slate-200 rounded-sm shadow-sm transition-all hover:shadow-lg"
+              >
                 <div className="relative w-full h-full">
-                  <ImageWithLoader src={partner.src} alt={partner.alt} fill className="object-contain transition-all duration-500 scale-90 group-hover:scale-100" />
+                  <ImageWithLoader 
+                    src={partner.src} 
+                    alt={partner.alt} 
+                    fill 
+                    className="object-contain transition-all duration-500 scale-90 group-hover:scale-100"
+                  />
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+    </section>
+
+      <section id="feasibility_study" className="w-full py-16 md:py-24 bg-slate-50 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          {/* Section Header */}
+          <div className="mb-10">
+            <h2 className="text-xl md:text-2xl font-medium tracking-[0.2em] md:tracking-[0.3em] uppercase text-slate-400">
+              Feasibility Study
+            </h2>
+            <div className="h-1 w-12 bg-blue-600 mt-4 rounded-full" />
+          </div>
+
+          {/* The Improved P Tag */}
+          <p className="max-w-3xl text-slate-600 text-base md:text-lg leading-relaxed font-light mb-12">
+            Our resident engineer oversees various activities pertaining to 
+            environmental issues, including:
+          </p>
+
+          {/* Services Grid */}
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+            {[
+              "Organizing high-level events and drafting comprehensive environmental policies",
+              "Liaising with review board stakeholders to facilitate formal environmental assessments",
+              "Strategic communication with stakeholders and the public regarding EIA processes",
+              "Technical data analysis and professional report preparation",
+              "Establishing detailed budgets and strategic work plans for project assessments",
+              "Drafting policy and position papers on environmental impact assessment methodologies"
+            ].map((service, index) => (
+              <div key={index} className="flex gap-4 group">
+                <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-blue-600 mt-2.5 group-hover:scale-150 transition-transform" />
+                <p className="text-slate-600 text-sm md:text-base leading-relaxed font-light">
+                  {service}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+
       {/* 6. LOCATION & CONTACT */}
-      <section id="location" className="px-6 lg:px-20 py-16 md:py-24 bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20">
-          <div>
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-blue-400 mb-10">Location</h2>
+    <section id="location" className="px-4 md:px-10 lg:px-20 py-12 md:py-24 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+          
+          {/* Contact Details Section */}
+          <div className="order-1">
+            <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-blue-400 mb-6 md:mb-10 text-center md:text-left">
+              Location
+            </h2>
             <div className="space-y-6 md:space-y-8">
-              <ContactItem icon={<MapPin />} title="Address" content="Ethiopia, Addis Ababa, 22 Mazoriya, Efrata building, 3rd floor" />
-              <ContactItem icon={<Phone />} title="Phone" content={<div className="flex flex-col text-base md:text-lg"><span>011 8683830</span><span>011 6672951</span><span>+251 913592121</span><span>+251 91122825 3</span><span>+251 966935979</span></div>} />
-              <ContactItem icon={<Mail />} title="Email" content={<span className="text-sm md:text-lg break-all">hhconsultingarchitectengineers@gmail.com</span>} />
-              <ContactItem icon={<Globe />} title="Website" content="www.hhconsulting.et" />
+              <ContactItem 
+                icon={<MapPin size={20} className="text-blue-400" />} 
+                title="Address" 
+                content="Ethiopia, Addis Ababa, 22 Mazoriya, Efrata building, 3rd floor" 
+              />
+              <ContactItem 
+                icon={<Phone size={20} className="text-blue-400" />} 
+                title="Phone" 
+                content={
+                  <div className="flex flex-col text-sm md:text-lg">
+                    <span>011 8683830</span>
+                    <span>011 6672951</span>
+                    <span>+251 913592121</span>
+                    <span>+251 911228253</span>
+                    <span>+251 966935979</span>
+                  </div>
+                } 
+              />
+              <ContactItem 
+                icon={<Mail size={20} className="text-blue-400" />} 
+                title="Email" 
+                content={<span className="text-sm md:text-lg break-all">hhconsultingarchitectengineers@gmail.com</span>} 
+              />
+              <ContactItem 
+                icon={<Globe size={20} className="text-blue-400" />} 
+                title="Website" 
+                content="www.hhconsulting.et" 
+              />
             </div>
           </div>
           
-          <div className="flex flex-col gap-8">
-            <div className="h-64 md:h-80 bg-slate-800 rounded-sm border border-slate-700 overflow-hidden shadow-2xl">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.534062301304!2d38.78729227354948!3d9.01494848921175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8593c43bc077%3A0x564b837fcf22503e!2sEfrata%20building!5e0!3m2!1sen!2set!4v1775898824454!5m2!1sen!2set" width="600" height="450" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          {/* Map and Socials Section */}
+          <div className="flex flex-col gap-8 order-2">
+            <div className="w-full h-64 md:h-96 bg-slate-800 rounded-xl border border-slate-700 overflow-hidden shadow-2xl relative">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3940.548456079979!2d38.783103!3d9.013627!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b859846664d6b%3A0xe74f4b2383c2763c!2sEfrata%20building!5e0!3m2!1sen!2set!4v1712990000000!5m2!1sen!2set" 
+                className="absolute inset-0 w-full h-full"
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
 
             <div className="pt-4">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-6 text-center md:text-left">Follow Us</p>
-              <div className="grid grid-cols-4 gap-4 max-w-sm mx-auto md:mx-0">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-6 text-center md:text-left">
+                Follow Us
+              </p>
+              <div className="grid grid-cols-4 gap-4 max-w-[280px] mx-auto md:mx-0">
                 {socialMedia.map((social, index) => (
-                  <a key={index} href={social.href || "#"} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-center transition-all">
-                    <div className="relative w-full h-8 md:h-12">
-                      <Image src={social.src} alt={social.alt} fill className="object-contain transition-transform group-hover:scale-110" />
+                  <a 
+                    key={index} 
+                    href={social.href || "#"} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="group flex items-center justify-center transition-all bg-slate-800 p-3 rounded-lg hover:bg-slate-700 border border-slate-700"
+                  >
+                    <div className="relative w-6 h-6 md:w-8 md:h-8">
+                      <Image 
+                        src={social.src} 
+                        alt={social.alt} 
+                        fill 
+                        className="object-contain transition-transform group-hover:scale-110" 
+                      />
                     </div>
                   </a>
                 ))}
@@ -350,7 +447,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+    </section>
     </main>
   );
 }

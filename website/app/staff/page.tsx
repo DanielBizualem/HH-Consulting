@@ -4,9 +4,9 @@ import Image,{ ImageProps } from 'next/image';
 import { Users, Lightbulb, Award, Star,Wallet } from 'lucide-react';
 
 // Images - update these paths to your project structure
-import recognition from '../../public/staff_recognition.png';
-import paymentDept from '../../public/payement_dept.png';
-import designDept from '../../public/design_dept.png';
+const recognition = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065819/staff_recognition_wkn4nd.png';
+const paymentDept = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065590/payement_dept_rbdpqz.png';
+const designDept = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065576/design_dept_nqbogc.png';
 
 const ImageWithLoader = (props: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);

@@ -27,21 +27,21 @@ const ImageWithLoader = (props: ImageProps) => {
 };
 
 // --- SITE IMAGES (.png) ---
-import site01 from '@/public/site01.png'
-import site02 from '@/public/site02.png'
-import site03 from '@/public/site03.png'
-import site04 from '@/public/site04.png'
-import site05 from '@/public/site05.png'
+const site01 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065778/site01_bc6eid.png'
+const site02 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065759/site02_nmlw3q.png'
+const site03 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065759/site03_zhbdtz.png'
+const site04 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065811/site04_maqctu.png'
+
 
 // --- PRESENTATION IMAGES (.png) ---
-import presentation01 from '@/public/presentaion01.png' 
-import presentation02 from '@/public/presentation02.png'
-import presentation03 from '@/public/presentation03.png'
-import presentation04 from '@/public/presentation04.png'
+const presentation01 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065559/presentaion01_ay1ru7.png' 
+const presentation02 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065546/presentation02_honqb3.png'
+const presentation03 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065561/presentation03_avrtxw.png'
+const presentation04 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065600/presentation04_zhfnnt.png'
 
 // --- RETREAT IMAGES (.png) ---
-import kuriftu01 from '@/public/kuriftu01.png'
-import kuriftu02 from '@/public/kuriftu02.png'
+const kuriftu01 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065596/kuriftu01_c7qeds.png'
+const kuriftu02 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065560/kuriftu02_dteg5h.png'
 
 const events = [
   {

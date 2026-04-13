@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { clsx, type ClassValue } from 'clsx';
 import Image from 'next/image';
-import logo from '../public/company_logo.png'
+const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776075384/company_logo_bwxvyo.png'
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

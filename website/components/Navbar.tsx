@@ -6,12 +6,12 @@ import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { clsx, type ClassValue } from 'clsx';
 import Image from 'next/image';
-const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776075384/company_logo_bwxvyo.png'
+
+const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776340102/company_logo-Photoroom_hmbhoz.png'
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
 
 const homeLinks = [
   { name: 'Mission, Vision, Value', href: '/#profile' },
@@ -22,14 +22,16 @@ const homeLinks = [
   { name: 'Feasibility Study', href: '/#feasibility_study' },
   { name: 'Location', href: '/#location' },
 ];
+
 const buildings = [
   { name: 'Infrastructure', href: '/building-design#infrastructure' },
   { name: 'Terminal Design', href: '/building-design#terminal_design' },
   { name: 'Road Construction', href: '/building-design#road_construction' },
   { name: 'Irrigation Work', href: '/building-design#irrigation_work' },
   { name: 'Bridge Design', href: '/building-design#bridge_design' },
-  {name:'Others',href:'/building-design#others'}
+  { name: 'Others', href: '/building-design#others' }
 ]
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -41,7 +43,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent scrolling when mobile menu is open
+  const isHomePage = pathname === '/';
+  const isDarkText = !isHomePage || scrolled || isOpen;
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -50,21 +54,24 @@ export default function Navbar() {
     }
   }, [isOpen]);
 
+  // UPDATED: Professional Font Style (Uppercase + Tracking)
   const navLinkStyle = cn(
-    "text-[14px] font-medium tracking-wide transition-all duration-300 relative py-1",
-    scrolled ? "text-slate-900" : "text-slate-700"
+    "text-[12px] uppercase font-bold tracking-[0.2em] transition-all duration-300 relative py-1",
+    isDarkText ? "text-slate-900" : "text-white"
   );
+
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
   };
+
   return (
     <nav className={cn(
-      "fixed top-0 w-full z-[100] transition-all duration-300 px-6 lg:px-20",
-      (scrolled || isOpen) 
-        ? "bg-white py-2 border-b border-gray-100 shadow-sm" 
-        : "bg-transparent py-4" 
+      "fixed top-0 w-full z-[100] transition-all duration-500 lg:px-20 px-6",
+      isDarkText 
+        ? "bg-white py-3 border-b border-gray-100 shadow-sm" 
+        : "bg-transparent py-5"
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center h-12">
         
@@ -73,27 +80,32 @@ export default function Navbar() {
             <Image 
               src={logo} 
               alt='company logo' 
-              width={180} 
-              height={85}
-              className="object-contain"
+              width={160} 
+              height={75}
+              className={cn(
+                "object-contain transition-all", 
+                !isDarkText && "brightness-0 invert"
+              )}
               priority
             />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-10">
           <div className="relative group">
-            <Link href="/" className={cn(navLinkStyle, "flex items-center gap-1")}>
-              Home
-              <ChevronDown size={14} className="opacity-50 group-hover:rotate-180 transition-transform" />
-              {pathname === '/' && (
-                <div className="absolute -bottom-0.5 left-0 w-full h-[2.5px] bg-blue-600 rounded-full" />
-              )}
+            <Link href="/" className={navLinkStyle}>
+                <span className="flex items-center gap-1">
+                  Home
+                  <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform" />
+                </span>
+                {pathname === '/' && (
+                  <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 rounded-full" />
+                )}
             </Link>
 
             <div className="absolute top-full -left-4 w-64 bg-white border border-gray-100 shadow-xl rounded-sm py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 mt-1">
               {homeLinks.map((item) => (
-                <Link key={item.name} href={item.href} className="block px-6 py-2 text-[12px] font-medium text-slate-500 hover:text-blue-600 hover:bg-slate-50">
+                <Link key={item.name} href={item.href} className="block px-6 py-2 text-[10px] uppercase tracking-widest font-semibold text-slate-500 hover:text-blue-600 hover:bg-slate-50">
                   {item.name}
                 </Link>
               ))}
@@ -101,42 +113,67 @@ export default function Navbar() {
           </div>
 
           <div className="relative group">
-          <Link href="/building-design" className={cn(navLinkStyle, "flex items-center gap-1")}>
-              Building Design
-              <ChevronDown size={14} className="opacity-50 group-hover:rotate-180 transition-transform" />
-              {pathname === '/building-design' && (
-                <div className="absolute -bottom-0.5 left-0 w-full h-[2.5px] bg-blue-600 rounded-full" />
-              )}
+            <Link href="/building-design" className={navLinkStyle}>
+                <span className="flex items-center gap-1">
+                  Building Design
+                  <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform" />
+                </span>
+                {pathname === '/building-design' && (
+                  <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 rounded-full" />
+                )}
             </Link>
             <div className="absolute top-full -left-4 w-64 bg-white border border-gray-100 shadow-xl rounded-sm py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 mt-1">
               {buildings.map((item) => (
-                <Link key={item.name} href={item.href} className="block px-6 py-2 text-[12px] font-medium text-slate-500 hover:text-blue-600 hover:bg-slate-50">
+                <Link key={item.name} href={item.href} className="block px-6 py-2 text-[10px] uppercase tracking-widest font-semibold text-slate-500 hover:text-blue-600 hover:bg-slate-50">
                   {item.name}
                 </Link>
               ))}
             </div>
           </div>
+
           <Link href="/staff" className={navLinkStyle}>
-            Our Team
-            {pathname === '/staff' && <div className="absolute -bottom-0.5 left-0 w-full h-[2.5px] bg-blue-600 rounded-full" />}
+              <span className="flex items-center gap-1">
+                Our Team
+                
+              </span>
+              {pathname === '/staff' && (
+                <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 rounded-full" />
+              )}
           </Link>
           
           <Link href="/events" className={navLinkStyle}>
-            Events
-            {pathname === '/events' && <div className="absolute -bottom-0.5 left-0 w-full h-[2.5px] bg-blue-600 rounded-full" />}
+              <span className="flex items-center gap-1">
+                Events
+                
+              </span>
+              {pathname === '/events' && (
+                <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 rounded-full" />
+              )}
+          </Link>
+
+          <Link 
+              href="/#location" 
+              className={cn(
+                "hidden lg:block px-6 py-2 text-[11px] font-bold uppercase tracking-[0.2em] border transition-all duration-500 ml-4",
+                isDarkText 
+                  ? "border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white" 
+                  : "border-white/40 text-white hover:bg-white hover:text-slate-900"
+              )}
+            >
+              Contact Us
           </Link>
         </div>
 
-        {/* Mobile Toggle - Ensure color is always visible */}
+        {/* Mobile Toggle Button */}
         <button 
-          className="lg:hidden p-1 text-slate-900 z-[160]" 
+          className={cn("lg:hidden p-2 z-[160]", (scrolled || isOpen || !isHomePage) ? "text-slate-900" : "text-white")} 
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu Overlay - Solid Background Fix */}
+      {/* Mobile Menu Overlay - STRUCTURE KEPT EXACTLY THE SAME */}
       {isOpen && (
         <div className="fixed inset-0 top-[60px] bg-white z-[150] lg:hidden flex flex-col animate-in fade-in slide-in-from-top-2 duration-300">
           <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-2">
@@ -145,7 +182,7 @@ export default function Navbar() {
             <div className="border-b border-slate-50 pb-2">
               <button 
                 onClick={() => toggleSection('home')}
-                className="w-full flex items-center justify-between py-3 text-md font-medium text-slate-900 tracking-tight"
+                className="w-full flex items-center justify-between py-3 text-[12px] uppercase tracking-[0.2em] font-bold text-slate-900"
               >
                 <div className="flex items-center gap-3">
                   <span className={`w-1 h-5 rounded-full transition-colors ${openSection === 'home' ? 'bg-blue-600' : 'bg-slate-200'}`} />
@@ -161,7 +198,7 @@ export default function Navbar() {
                       key={item.name} 
                       href={item.href} 
                       onClick={() => setIsOpen(false)} 
-                      className="text-slate-500 text-sm font-normal uppercase tracking-widest hover:text-blue-600 transition-colors py-1"
+                      className="text-slate-500 text-[10px] uppercase tracking-widest font-semibold hover:text-blue-600 transition-colors py-1"
                     >
                       {item.name}
                     </Link>
@@ -174,7 +211,7 @@ export default function Navbar() {
             <div className="border-b border-slate-50 pb-2">
               <button 
                 onClick={() => toggleSection('building')}
-                className="w-full flex items-center justify-between py-3 text-md font-medium text-slate-900 tracking-tight"
+                className="w-full flex items-center justify-between py-3 text-[12px] uppercase tracking-[0.2em] font-bold text-slate-900"
               >
                 <div className="flex items-center gap-3">
                   <span className={`w-1 h-5 rounded-full transition-colors ${openSection === 'building' ? 'bg-blue-600' : 'bg-slate-200'}`} />
@@ -190,7 +227,7 @@ export default function Navbar() {
                       key={item.name} 
                       href={item.href} 
                       onClick={() => setIsOpen(false)} 
-                      className="text-slate-500 text-sm font-normal uppercase tracking-widest hover:text-blue-600 transition-colors py-1"
+                      className="text-slate-500 text-[10px] uppercase tracking-widest font-semibold hover:text-blue-600 transition-colors py-1"
                     >
                       {item.name}
                     </Link>
@@ -201,27 +238,27 @@ export default function Navbar() {
 
             {/* STATIC LINKS */}
             <div className="">
-              <Link 
-                href="/staff" 
-                onClick={() => setIsOpen(false)} 
-                className="flex items-center text-md font-medium text-slate-700 px-1"
-              >
+              <Link href="/staff" className={navLinkStyle}>
                 Our Team
+                {pathname === '/staff' && <div className="absolute -bottom-0.5 left-0 w-full h-[2.5px] bg-blue-600 rounded-full" />}
               </Link>
               <Link 
                 href="/events" 
                 onClick={() => setIsOpen(false)} 
-                className="flex items-center py-5 text-md font-medium text-slate-700 px-1"
+                className="flex items-center py-4 text-[12px] uppercase tracking-[0.2em] font-bold text-slate-700 px-1"
               >
                 Events
               </Link>
+              
             </div>
+
+            
 
           </div>
           
           {/* BRANDING FOOTER */}
           <div className="p-8 bg-slate-50 text-center">
-            <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-slate-400">
+            <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-slate-400">
               HH Consulting Architects
             </p>
           </div>

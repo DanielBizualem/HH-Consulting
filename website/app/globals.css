@@ -63,19 +63,26 @@
 }
 
 .animate-border-glow {
-  /* Removed the border-box and solid border lines */
+  /* Mobile Default (Centered) */
+  --glow-pos: 70% 20%; 
+
   background: conic-gradient(
-    from var(--border-angle) at 70% 50%, 
+    from var(--border-angle) at var(--glow-pos), 
     #d0c8bc, 
     #e3e3de, 
     #aeadaa, 
     #d0c8bc
   );
   
-  /* Smooths the appearance on high-res screens */
   background-origin: padding-box;
-  
   animation: border-rotate 6s linear infinite;
+}
+
+/* Desktop View (Offset) */
+@media (min-width: 1024px) {
+  .animate-border-glow {
+    --glow-pos: 70% 50%;
+  }
 }
 
 @layer base {

@@ -54,7 +54,6 @@ export default function Navbar() {
     }
   }, [isOpen]);
 
-  // UPDATED: Professional Font Style (Uppercase + Tracking)
   const navLinkStyle = cn(
     "text-[12px] uppercase font-bold tracking-[0.2em] transition-all duration-300 relative py-1",
     isDarkText ? "text-slate-900" : "text-white"
@@ -69,8 +68,9 @@ export default function Navbar() {
   return (
     <nav className={cn(
       "fixed top-0 w-full z-[100] transition-all duration-500 lg:px-20 px-6",
+      // FIXED: Removed border-b border-gray-100 here
       isDarkText 
-        ? "bg-white py-3 border-b border-gray-100 shadow-sm" 
+        ? "bg-white py-3 shadow-sm" 
         : "bg-transparent py-5"
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center h-12">
@@ -80,7 +80,7 @@ export default function Navbar() {
             <Image 
               src={logo} 
               alt='company logo' 
-              width={160} 
+              width={195} 
               height={75}
               className={cn(
                 "object-contain transition-all", 
@@ -132,20 +132,14 @@ export default function Navbar() {
           </div>
 
           <Link href="/staff" className={navLinkStyle}>
-              <span className="flex items-center gap-1">
-                Our Team
-                
-              </span>
+              <span className="flex items-center gap-1">Our Team</span>
               {pathname === '/staff' && (
                 <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 rounded-full" />
               )}
           </Link>
           
           <Link href="/events" className={navLinkStyle}>
-              <span className="flex items-center gap-1">
-                Events
-                
-              </span>
+              <span className="flex items-center gap-1">Events</span>
               {pathname === '/events' && (
                 <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 rounded-full" />
               )}
@@ -173,12 +167,11 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay - STRUCTURE KEPT EXACTLY THE SAME */}
+      {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="fixed inset-0 top-[60px] bg-white z-[150] lg:hidden flex flex-col animate-in fade-in slide-in-from-top-2 duration-300">
           <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-2">
             
-            {/* HOME SECTION */}
             <div className="border-b border-slate-50 pb-2">
               <button 
                 onClick={() => toggleSection('home')}
@@ -207,7 +200,6 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* BUILDING DESIGN SECTION */}
             <div className="border-b border-slate-50 pb-2">
               <button 
                 onClick={() => toggleSection('building')}
@@ -236,27 +228,16 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* STATIC LINKS */}
-            <div className="">
-              <Link href="/staff" className={navLinkStyle}>
+            <div className="flex flex-col gap-4 py-4">
+              <Link href="/staff" onClick={() => setIsOpen(false)} className="text-[12px] uppercase tracking-[0.2em] font-bold text-slate-700 px-4">
                 Our Team
-                {pathname === '/staff' && <div className="absolute -bottom-0.5 left-0 w-full h-[2.5px] bg-blue-600 rounded-full" />}
               </Link>
-              <Link 
-                href="/events" 
-                onClick={() => setIsOpen(false)} 
-                className="flex items-center py-4 text-[12px] uppercase tracking-[0.2em] font-bold text-slate-700 px-1"
-              >
+              <Link href="/events" onClick={() => setIsOpen(false)} className="text-[12px] uppercase tracking-[0.2em] font-bold text-slate-700 px-4">
                 Events
               </Link>
-              
             </div>
-
-            
-
           </div>
           
-          {/* BRANDING FOOTER */}
           <div className="p-8 bg-slate-50 text-center">
             <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-slate-400">
               HH Consulting Architects

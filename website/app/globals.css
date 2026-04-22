@@ -51,9 +51,61 @@
     --foreground: #ededed;
   }
 }
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-rotate {
+  from { --border-angle: 0deg; }
+  to { --border-angle: 360deg; }
+}
+
+.animate-border-glow {
+  /* Removed the border-box and solid border lines */
+  background: conic-gradient(
+    from var(--border-angle) at 70% 50%, 
+    #d0c8bc, 
+    #e3e3de, 
+    #aeadaa, 
+    #d0c8bc
+  );
+  
+  /* Smooths the appearance on high-res screens */
+  background-origin: padding-box;
+  
+  animation: border-rotate 6s linear infinite;
+}
+
+@layer base {
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #E5A343 transparent;
+  }
+
+  /* For Chrome, Safari, and Edge */
+  *::-webkit-scrollbar {
+    width: 1px !important;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 5px;
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background-color: #E5A343;
+  }
+}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter,Arial, Helvetica, sans-serif;
 }

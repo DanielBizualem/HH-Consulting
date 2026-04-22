@@ -9,11 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        // This links the Tailwind class 'font-poppins' to the CSS variable
-        poppins: ["var(--font-poppins)", "sans-serif"],
+        // This makes Inter the primary sans-serif font
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui'],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 };
 export default config;

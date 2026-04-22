@@ -14,8 +14,14 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
+// Configure the Inter font
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter', // This creates a CSS variable
+});
 
-const inter = Inter({ subsets: ["latin"] });
+
 const montserrat = Montserrat({ 
   subsets: ["latin"],
   weight: ['400', '600', '700', '800'] // Must include 800 for that extra-bold look
@@ -31,8 +37,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`scroll-smooth ${poppins.variable}`}>
-      <body className={`${montserrat.className} font-poppins antialiased bg-white text-slate-900`}>
+    <html lang="en" className={`scroll-smooth ${inter.variable} antialiased`}>
+      <body className={`${inter.className} font-poppins antialiased bg-white text-slate-900`}>
       <Suspense fallback={null}>
           <TopLoader />
         </Suspense>

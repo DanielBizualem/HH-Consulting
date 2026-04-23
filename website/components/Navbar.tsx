@@ -77,17 +77,19 @@ export default function Navbar() {
         
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-            <Image 
-              src={logo} 
-              alt='company logo' 
-              width={195} 
-              height={75}
-              className={cn(
-                "object-contain transition-all", 
-                !isDarkText && "brightness-0 invert"
-              )}
-              priority
-            />
+        <Image 
+          src={logo} 
+          alt='company logo' 
+          width={195} 
+          height={75}
+          className={cn(
+            // Mobile: smaller width | Tablet: medium | Desktop: original size
+           "w-35 md:w-42.5 lg:w-48.75 h-auto", 
+            "object-contain transition-all", 
+            !isDarkText && "brightness-0 invert"
+          )}
+          priority
+        />
         </Link>
 
         {/* Desktop Menu */}

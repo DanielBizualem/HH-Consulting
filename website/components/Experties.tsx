@@ -57,15 +57,17 @@ export default function Expertise() {
             </span>
           </motion.div>
           
-          <motion.h2 
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-5xl lg:text-7xl font-[800] text-slate-900 tracking-tight leading-[0.9] antialiased"
           >
-            Professional <span className="text-slate-400 font-[300]">Expertise</span><span className="text-[#E5A343]">.</span>
-          </motion.h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            PROFESSIONAL <span className="text-[#E5A343]">EXPERTISE.</span>
+          </h2>
+          </motion.div>
           
           <motion.p 
             initial={{ opacity: 0 }}

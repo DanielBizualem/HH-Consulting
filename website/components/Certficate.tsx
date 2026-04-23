@@ -44,11 +44,11 @@ export default function Certificate() {
   const [selectedImg, setSelectedImg] = useState<null | typeof certificates[0]>(null);
 
   return (
-    <section id="certificates" className="w-full py-24 lg:py-32 bg-[#FAFBFC] font-poppins">
+    <section id="certificates" className="w-full py-24 lg:py-10 bg-[#FAFBFC] font-poppins">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
         {/* --- Header --- */}
-        <div className="mb-20 flex flex-col items-center text-center">
+        <div className="mb-20 flex flex-col items-start text-center">
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,15 +62,17 @@ export default function Certificate() {
             <div className="h-px w-8 bg-[#E5A343]" />
           </motion.div>
           
-          <motion.h2 
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-5xl lg:text-7xl font-[800] text-slate-900 tracking-tight leading-none mb-8"
           >
-            Our <span className="text-slate-400 font-[300]">Industry</span><span className="text-[#E5A343]"> Trust.</span>
-          </motion.h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            OUR <span className="text-[#E5A343]">INDUSTRY TRUST.</span>
+          </h2>
+          </motion.div>
           <div className="h-1 w-12 bg-slate-900 rounded-full" />
         </div>
 
@@ -132,36 +134,50 @@ export default function Certificate() {
         </div>
       </div>
 
+      
       {/* --- Lightbox Modal --- */}
-      <AnimatePresence>
-        {selectedImg && (
-          <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center bg-[#0F172A]/95 backdrop-blur-xl p-6 lg:p-20"
-            onClick={() => setSelectedImg(null)}
-          >
-            <motion.button 
-              className="absolute top-10 right-10 text-white/50 hover:text-white"
-              onClick={() => setSelectedImg(null)}
-            >
-              <X size={40} weight="thin" />
-            </motion.button>
-            
-            <motion.div 
-              initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 20 }}
-              className="relative w-full h-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image 
-                src={selectedImg.src} 
-                alt={selectedImg.alt} 
-                fill 
-                className="object-contain" 
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+<AnimatePresence>
+  {selectedImg && (
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-[#0F172A]/95 backdrop-blur-xl p-4 lg:p-20"
+      onClick={() => setSelectedImg(null)}
+    >
+      {/* CLOSE BUTTON: 
+         - Increased z-index to ensure it's on top 
+         - Better mobile positioning (top-6)
+         - Added bg-slate-800/50 for a larger, easier touch target
+      */}
+      <motion.button 
+        className="absolute top-6 right-6 lg:top-12 lg:right-12 z-[210] p-3 rounded-full bg-slate-800/50 text-white/70 hover:text-white transition-colors"
+        onClick={(e) => {
+          e.stopPropagation(); // Prevents bubbling
+          setSelectedImg(null);
+        }}
+      >
+        <X size={28} weight="bold" /> 
+      </motion.button>
+      
+      <motion.div 
+        initial={{ scale: 0.9, y: 20 }} 
+        animate={{ scale: 1, y: 0 }} 
+        exit={{ scale: 0.9, y: 20 }}
+        className="relative w-full h-full max-w-5xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Image 
+          src={selectedImg.src} 
+          alt={selectedImg.alt} 
+          fill 
+          className="object-contain" 
+          priority
+        />
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </section>
   );
 }

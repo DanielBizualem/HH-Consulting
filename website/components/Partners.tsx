@@ -57,9 +57,9 @@ export default function Partners() {
                 Collaborations
               </span>
             </div>
-            <h2 className="text-5xl lg:text-7xl font-[800] text-slate-900 tracking-tighter leading-none antialiased">
-              Partners & <span className="text-[#E5A343]">Clients.</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            PARTNERS & <span className="text-[#E5A343]">CLIENTS.</span>
+          </h2>
           </div>
           
           <div className="h-px flex-1 bg-slate-100 hidden md:block mb-4 mx-8" />

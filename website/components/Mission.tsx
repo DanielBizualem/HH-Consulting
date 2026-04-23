@@ -29,7 +29,7 @@ export default function Mission() {
   ];
 
   return (
-    <section id="philosophy" className="w-full py-24 lg:py-32 bg-[#FAFBFC] font-poppins overflow-hidden">
+    <section id="philosophy" className="w-full py-24 lg:py-14 bg-[#FAFBFC] font-poppins overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
         {/* --- Section Header --- */}
@@ -46,15 +46,17 @@ export default function Mission() {
             </span>
           </motion.div>
           
-          <motion.h2 
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-5xl lg:text-7xl font-[800] text-slate-900 tracking-tight leading-[0.9] mb-8"
           >
-            Our <span className="text-slate-400 font-[300]">Cores</span><span className="text-[#E5A343]">.</span>
-          </motion.h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            OUR <span className="text-[#E5A343]">CORES.</span>
+          </h2>
+          </motion.div>
         </header>
 
         {/* --- The Technical Grid --- */}

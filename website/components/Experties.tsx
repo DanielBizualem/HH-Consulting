@@ -9,6 +9,7 @@ import {
   ArrowUpRight 
 } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
+import Link from 'next/link';
 
 export default function Expertise() {
   const expertiseData = [
@@ -143,9 +144,9 @@ export default function Expertise() {
           <div className="hidden lg:flex p-12 lg:p-16 bg-[#E5A343] flex-col justify-center items-center text-center">
             <h4 className="text-white text-2xl font-bold mb-4">Start a Project</h4>
             <p className="text-white/80 text-sm mb-8">Ready to bring your vision to life?</p>
-            <button className="px-8 py-3 bg-[#0F172A] text-white rounded-xl text-xs font-bold uppercase tracking-widest hover:scale-105 transition-transform">
+            <Link href="/#location" className="px-8 py-3 bg-[#0F172A] text-white rounded-xl text-xs font-bold uppercase tracking-widest hover:scale-105 transition-transform">
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>

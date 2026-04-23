@@ -15,16 +15,15 @@ export default function Services() {
   ];
 
   return (
-    // Changed: Removed bg-white so the background layer is visible
     <section className="relative py-24 font-sans antialiased overflow-hidden bg-slate-50">
       
       {/* PROFESSIONAL BACKGROUND LAYER */}
-      <div className="absolute inset-0 z-0">
+      {/* CHANGED: added 'hidden md:block' to hide on small screens and show on medium+ */}
+      <div className="absolute inset-0 z-0 hidden md:block">
         <Image
           src="https://res.cloudinary.com/djxfy60tt/image/upload/v1776890922/globe_u2i4yv.png" 
           alt="Background Pattern"
           fill
-          // Changed: Increased opacity from 0.03 to 0.1 for better visibility
           className="object-cover opacity-15"
           priority
         />
@@ -32,7 +31,7 @@ export default function Services() {
         {/* Architectural Grid Overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
         
-        {/* Soft Gradient: Changed to be transparent in the middle so the image shows */}
+        {/* Soft Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-transparent to-slate-50" />
       </div>
 
@@ -52,7 +51,6 @@ export default function Services() {
           {services.map((service, index) => (
             <div 
               key={index}
-              // Changed: background to white/80 to allow a slight "glass" look over the new background
               className="group relative p-8 rounded-2xl border border-slate-200/60 bg-white/80 backdrop-blur-md hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500 ease-out"
             >
               {/* Subtle Numbering */}

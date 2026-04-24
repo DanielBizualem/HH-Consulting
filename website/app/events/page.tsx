@@ -4,7 +4,7 @@ import Image,{ ImageProps } from 'next/image';
 import { Calendar, MapPin, Presentation, Trees, HardHat, ArrowRight } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
-
+const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776110480/favicon-Photoroom_a5bibi.png'
 const ImageWithLoader = (props: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -73,27 +73,57 @@ const events = [
 
 export default function EventsPage() {
   return (
-    <main className="min-h-screen bg-white pb-20">
+    <main className="min-h-screen bg-white">
 
       {/* Updated Header: White background with subtle slate border */}
-      <header className="pt-30  bg-gradient-to-b from-slate-50 to-white border-b border-slate-100 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03]">
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center" />
-        </div>
+      <header className="relative pt-32 pb-16 bg-white border-b border-slate-200 overflow-hidden font-poppins">
+  {/* BACKGROUND: Technical Grid & Coordinates */}
+  <div className="absolute inset-0 opacity-[0.05] pointer-events-none select-none">
+    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
+    {/* Coordinate Markers */}
+    <span className="absolute top-4 left-4 text-[9px] font-mono text-slate-400">X: 08°33′N</span>
+    <span className="absolute top-4 right-4 text-[9px] font-mono text-slate-400">Y: 39°16′E</span>
+    <div className="absolute bottom-0 left-1/2 w-px h-full bg-slate-100" />
+  </div>
+  
+  <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20">
+    <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
+      
+      {/* LEFT COLUMN: The "Drawing Title" */}
+      <div className="flex-1">
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 mb-6">
-            <Calendar size={14} />
-            <span className="text-[10px] font-bold uppercase tracking-widest">Company Life</span>
-          </div>
-          <h1 className="flex flex-wrap justify-center text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-6 text-slate-900 text-center">
-            Events & <span className="text-blue-600 ml-2 md:ml-3">Milestones</span>
-          </h1>
-          <p className="flex justify-center text-slate-500 text-lg max-w-2xl leading-relaxed">
-            Exploring the moments that define HH Consulting's culture and expertise.
+        <h1 className="text-4xl md:text-6xl font-[900] tracking-tighter text-slate-900 leading-[0.8] mb-8">
+          EVENTS <span className="text-[#E5A343]">+</span><br />
+          <span className="text-slate-200">MILESTONES</span>
+        </h1>
+
+      </div>
+
+      {/* RIGHT COLUMN: The "Specification" */}
+      <div className="lg:max-w-md mt-auto">
+        <div className="relative p-8 border border-slate-100 bg-slate-50/50 backdrop-blur-sm">
+          {/* Architectural Corner Bracket */}
+          <div className="absolute -top-[1px] -left-[1px] w-4 h-4 border-t border-l border-[#E5A343]" />
+          
+          <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+            At <span className="text-slate-900 font-bold">HH Consulting</span>, we treat every event as a structural component. These milestones represent the foundation of our corporate synergy and the elevation of our engineering expertise.
           </p>
+          
+          <div className="mt-6 flex items-center gap-2 group cursor-pointer">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#E5A343]">
+              View Project Logs
+            </span>
+            <div className="h-[1px] flex-1 bg-slate-200 group-hover:bg-[#E5A343] transition-colors" />
+          </div>
         </div>
-      </header>
+      </div>
+
+    </div>
+
+    {/* DECORATIVE: Floor Plan Line */}
+    <div className="absolute bottom-0 right-0 h-px w-2/3 bg-gradient-to-l from-[#E5A343] to-transparent" />
+  </div>
+</header>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-20 mt-20 relative z-20">
         <div className="space-y-25">
@@ -135,6 +165,39 @@ export default function EventsPage() {
           ))}
         </div>
       </div>
+      <footer className="bg-[#1a364b] text-white py-20 px-6 flex flex-col items-center justify-center text-center mt-10">
+      {/* Logo Container */}
+      <div className="mb-8 relative w-20 h-20">
+        <Image 
+          src={logo} // Ensure your logo import matches this variable name
+          alt="HH Consulting Logo" 
+          fill 
+          className="object-contain brightness-0 invert" // Inverts to white if the original is dark
+        />
+      </div>
+
+      {/* Company Name English */}
+      <h2 className="text-lg md:text-xl font-medium tracking-[0.15em] uppercase mb-2">
+        HH Consulting Architects & Engineers PLC.
+      </h2>
+
+      {/* Company Name Amharic */}
+      <h2 className="text-xl md:text-2xl font-bold mb-12">
+        ኤች ኤች አማካሪ አርክቴክቶች እና መሐንዲሶች
+      </h2>
+
+      {/* Slogan */}
+      <p className="text-slate-300 text-base md:text-lg font-light italic tracking-wide">
+        "For any international projects, we are 
+          your dedicated global partner in 
+          design and construction supervision."
+      </p>
+      
+      {/* Optional: Developer Credit / Copyright */}
+      <div className="mt-16 pt-8 border-t border-white/10 w-full max-w-4xl text-xs text-slate-500 uppercase tracking-[0.2em]">
+        © {new Date().getFullYear()} HH Consulting. All Rights Reserved.
+      </div>
+    </footer>
     </main>
   );
 }

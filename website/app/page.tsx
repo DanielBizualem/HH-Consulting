@@ -138,9 +138,14 @@ export default function HomePage() {
       </div>
 
     </div>
+    
   </div>
+  
      </section>
 
+ 
+     
+     
      <Services/>
 
       {/* 2. MISSION, VISION, VALUE */}

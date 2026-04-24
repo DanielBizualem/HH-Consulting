@@ -69,45 +69,85 @@ export default function BuildingDesignPage() {
       <div className="px-6 lg:px-20 max-w-7xl mx-auto">
         
         {/* Header Section */}
-        <header className="mb-20 border-b border-gray-100 pb-12">
-          <span className="text-xs font-bold tracking-[0.3em] uppercase text-blue-600 mb-4 block">
-            Portfolio
-          </span>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-light tracking-tighter mb-8 leading-[1.1] md:leading-tight">
-              Building Design <span className="italic text-gray-400">&</span> Architecture
+        <header className="mb-24 border-b border-slate-100 pb-16 font-poppins">
+          {/* Sub-label with Firm Identity */}
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-[11px] font-black uppercase tracking-[0.5em] text-[#E5A343] antialiased">
+              Portfolio
+            </span>
+            <div className="h-px w-12 bg-[#E5A343]/30" />
+          </div>
+
+          {/* Main Title: Tight tracking and elegant contrast */}
+          <h1 className="text-5xl md:text-6xl font-[800] tracking-tighter text-slate-900 leading-[0.85] mb-10 antialiased">
+            Building Design <br /> 
+            <span className="text-[#E5A343]">&</span> <span className="font-light text-slate-400">Architecture.</span>
           </h1>
-          <p className="text-md max-w-2xl leading-relaxed">
-          At HH Consulting Architects and Engineers,
-          We transcend conventional aesthetics by seamlessly weaving Ethiopian heritage, innovative sustainability, and human-centric functionality into every structure. Our designs are not merely buildings — they are dynamic narratives of culture, resilience, and progress.
-          </p>
-          <div className='flex mt-5 ml-8'>
-            <ul className='flex flex-col list-disc gap-3 text-md'>
-                <li>Building Design (Architectural, Structural, 
-                 Electrical, Sanitary, Mechanical, and more)
-                 </li>
-                 <li>
-                 Urban Design and Planning Works
-                 </li>
-                 <li>
-                 Topography Survey
-                 </li>
-                 <li>
-                 Landscape Design and Specification
-                 </li>
-                 <li>
-                 Contract Administration and Supervision/ 
-                  Quality Control
-                 </li>
-            </ul>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Mission Statement */}
+            <p className="text-lg text-slate-600 leading-relaxed font-medium max-w-xl">
+              At <span className="text-slate-900 font-bold">HH Consulting Architects and Engineers</span>, 
+              we transcend conventional aesthetics by weaving Ethiopian heritage with 
+              innovative sustainability. Our designs are dynamic narratives of 
+              culture, resilience, and progress.
+            </p>
+
+            {/* Disciplines: Technical Grid Style */}
+            <div className="relative border-l border-slate-100 pl-8 lg:pl-12">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-6">
+                Core Disciplines
+              </h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+                {[
+                  "Full-Scale Building Design",
+                  "Urban Planning & Design",
+                  "Topography Surveying",
+                  "Landscape & Specification",
+                  "Contract Administration",
+                  "Quality Control & Supervision"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 group cursor-default">
+                    <span className="h-1 w-1 bg-[#E5A343] rounded-full group-hover:scale-[2.5] transition-transform duration-300" />
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-slate-900 transition-colors">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Decorative Technical Detail */}
+              <div className="absolute -left-[1px] top-0 h-8 w-[2px] bg-[#E5A343]" />
+            </div>
           </div>
         </header>
 
         {/* 1. ARCHITECTURAL APPROACH (The "How") */}
-        <section className="grid md:grid-cols-4 gap-8 mb-32">
-          <ApproachCard icon={<Ruler size={20} />} title="Precision" desc="Exact technical drafting." />
-          <ApproachCard icon={<Compass size={20} />} title="Context" desc="Site-specific orientation." />
-          <ApproachCard icon={<Layers size={20} />} title="Structure" desc="Optimized material load." />
-          <ApproachCard icon={<Maximize2 size={20} />} title="Scale" desc="Human-centric proportions." />
+        <section className="grid grid-cols-2 md:grid-cols-4 gap-px bg-slate-100 border border-slate-100 mb-32 overflow-hidden">
+            <ApproachCard 
+              icon={<Ruler size={22} weight="thin" />} 
+              title="Precision" 
+              number="01"
+              desc="Surgical accuracy in technical drafting and structural detailing." 
+            />
+            <ApproachCard 
+              icon={<Compass size={22} weight="thin" />} 
+              title="Context" 
+              number="02"
+              desc="Respecting site-specific orientation and ecological integration." 
+            />
+            <ApproachCard 
+              icon={<Layers size={22} weight="thin" />} 
+              title="Structure" 
+              number="03"
+              desc="Advanced material optimization for integrity and longevity." 
+            />
+            <ApproachCard 
+              icon={<Maximize2 size={22} weight="thin" />} 
+              title="Scale" 
+              number="04"
+              desc="Designing for the human experience through proportional harmony." 
+            />
         </section>
 
         {/* 2. PROJECT GALLERY */}
@@ -902,7 +942,9 @@ export default function BuildingDesignPage() {
 
       {/* Slogan */}
       <p className="text-slate-300 text-base md:text-lg font-light italic tracking-wide">
-        "We create with heart, and build with mind"
+        "For any international projects, we are 
+          your dedicated global partner in 
+          design and construction supervision."
       </p>
       
       {/* Optional: Developer Credit / Copyright */}
@@ -914,12 +956,29 @@ export default function BuildingDesignPage() {
   );
 }
 
-function ApproachCard({ icon, title, desc }: { icon: any, title: string, desc: string }) {
-  return (
-    <div className="p-8 border border-gray-100 hover:border-blue-600 transition-colors cursor-default">
-      <div className="text-blue-600 mb-6">{icon}</div>
-      <h4 className="font-bold text-sm uppercase tracking-widest mb-2">{title}</h4>
-      <p className="text-gray-400 text-xs">{desc}</p>
+const ApproachCard = ({ icon, title, desc, number }) => (
+  <div className="group relative bg-white p-8 lg:p-10 transition-all duration-500 hover:bg-slate-50">
+    {/* Corner Accent */}
+    <div className="absolute top-0 right-0 w-0 h-0 border-t-[1px] border-r-[1px] border-[#E5A343] transition-all duration-500 group-hover:w-4 group-hover:h-4" />
+    
+    <div className="flex justify-between items-start mb-8">
+      <div className="text-slate-900 group-hover:text-[#E5A343] transition-colors duration-500">
+        {icon}
+      </div>
+      <span className="text-[10px] font-black text-slate-200 group-hover:text-[#E5A343]/30 transition-colors">
+        {number}
+      </span>
     </div>
-  );
-}
+
+    <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900 mb-3">
+      {title}
+    </h3>
+    
+    <p className="text-[11px] leading-relaxed text-slate-500 font-medium group-hover:text-slate-700 transition-colors">
+      {desc}
+    </p>
+
+    {/* Bottom Progress Line */}
+    <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#E5A343] transition-all duration-700 group-hover:w-full" />
+  </div>
+);

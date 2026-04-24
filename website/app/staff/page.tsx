@@ -1,243 +1,241 @@
 "use client"
 import React, { useState } from 'react';
-import Image,{ ImageProps } from 'next/image';
-import { Users, Lightbulb, Award, Star,Wallet } from 'lucide-react';
+import Image, { ImageProps } from 'next/image';
+import { Users, Lightbulb, Award, Star, Wallet, Target, ArrowRight } from 'lucide-react';
 
-// Images - update these paths to your project structure
+/** * 1. IMAGE ASSETS & DATA 
+ * Defined outside the component to ensure accessibility
+ */
 const recognition = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065819/staff_recognition_wkn4nd.png';
 const paymentDept = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065590/payement_dept_rbdpqz.png';
 const designDept = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065576/design_dept_nqbogc.png';
 
-const general_manager = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111899/general_manager_kbctoq.png'
-const deputy = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111904/dupy_general_manager_xbfrqp.png'
-const receptionist01 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111885/receptionist_bqpgce.png'
-const receptionist02 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111880/receptionist01_jwm6xm.png'
-const staff_members = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111903/staff_member_vhs8ea.png'
-
+const general_manager = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111899/general_manager_kbctoq.png';
+const deputy = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111904/dupy_general_manager_xbfrqp.png';
+const receptionist01 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111885/receptionist_bqpgce.png';
+const receptionist02 = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111880/receptionist01_jwm6xm.png';
+const staff_members = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111903/staff_member_vhs8ea.png';
+const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776110480/favicon-Photoroom_a5bibi.png'
 const staff = [
-  {src:general_manager,alt:"general_manager"},
-  {src:deputy,alt:'deputy_general_manager'},
-  {src:receptionist01,alt:'receptionist01'},
-  {src:receptionist02,alt:'receptionist02'},
-  {src:staff_members,alt:'staff_members'},
-]
+  { src: general_manager, alt: "general_manager" },
+  { src: deputy, alt: 'deputy_general_manager' },
+  { src: receptionist01, alt: 'receptionist01' },
+  { src: receptionist02, alt: 'receptionist02' },
+  { src: staff_members, alt: 'staff_members' },
+];
 
-
+/** * 2. HELPER COMPONENTS
+ */
 const ImageWithLoader = (props: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
-
   return (
-    <div className="relative w-full h-full min-h-[50px] flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+    <div className="relative w-full h-full min-h-[100px] flex items-center justify-center bg-slate-50 overflow-hidden">
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100/50 z-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-blue-600 animate-pulse">
-            Loading...
-          </span>
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-100/50 z-10">
+          <div className="w-6 h-6 border-2 border-slate-200 border-t-[#E5A343] rounded-full animate-spin" />
         </div>
       )}
       <Image
         {...props}
         onLoadingComplete={() => setIsLoading(false)}
-        className={`${props.className} ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+        className={`${props.className} ${isLoading ? 'opacity-0 scale-95' : 'opacity-100 scale-100 transition-all duration-700'}`}
       />
     </div>
   );
 };
 
-export default function StaffPage() {
+function StaffCard({ member, label }: { member: any, label: string }) {
   return (
-    <main className="min-h-screen bg-white">
-      {/* 1. Page Header with Company Logo Background */}
-      <header className="pt-40 pb-20 bg-[#f8fafc] border-b border-slate-100 relative overflow-hidden">
-        {/* Subtle large logo as background element */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] scale-150 rotate-[-10deg]">
-           {/* Add your logo image component here for background effect, e.g.:
-           <Image src="/your-logo.png" alt="" width={800} height={800} /> 
-           */}
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 text-center lg:text-left">
-          <div className="flex gap-2 items-center justify-center lg:justify-start mb-6">
-            <Users size={18} className="text-blue-600" />
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400">Our Teams</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-black text-slate-950 tracking-tighter max-w-2xl mx-auto lg:mx-0">
-            Meet the HH Consulting <span className=" font-semibold text-blue-600">Teams</span>
-          </h1>
-          <p className="text-gray-600 mt-6 leading-relaxed max-w-lg mx-auto lg:mx-0">
-            A diverse and multidisciplinary collective of architects, engineers, and project management professionals dedicated to visionary design and technical excellence across Ethiopia.
-          </p>
-        </div>
-      </header>
-
-      {/* 2. Department Sections Grid */}
-      <section className="px-6 lg:px-20 py-24 max-w-7xl mx-auto space-y-24">
-      <div className="space-y-16">
-  {/* FIRST LINE: Executive Leadership */}
-  <div className="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
-    {staff.filter(m => m.alt.includes('manager')).map((member, index) => (
-      <div key={index} className="flex-1 group">
-        <StaffCard member={member} label="Leadership" />
-      </div>
-    ))}
-  </div>
-
-  {/* SECOND LINE: Front Office / Administration */}
-  <div className="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
-    {staff.filter(m => m.alt.includes('receptionist')).map((member, index) => (
-      <div key={index} className="flex-1 group">
-        <StaffCard member={member} label="Administration" />
-      </div>
-    ))}
-  </div>
-
-  {/* THIRD LINE: Technical Team / Staff */}
-  <div className="flex justify-center max-w-5xl mx-auto">
-    {staff.filter(m => m.alt.includes('staff_member')).map((member, index) => (
-      <div key={index} className="w-full group">
-        <div className="relative aspect-video overflow-hidden rounded-sm border border-slate-200">
-          <ImageWithLoader 
-            src={member.src}
-            alt={member.alt}
-            fill
-            className=" transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
-          {/* Design Department Text */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="flex items-center gap-2 mb-2">
-              <Lightbulb size={24} className="text-blue-500" />
-              <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400">Design</h2>
-            </div>
-            <h3 className="text-3xl font-bold tracking-tight text-slate-900 leading-tight">
-              Design & Architecture Department
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              Our visionaries translate abstract concepts into tangible, resilient architectural and infrastructure designs, balancing aesthetics, function, and sustainability.
-            </p>
-          </div>
-          
-          {/* Design Department Image */}
-          <div className="lg:col-span-7 relative aspect-[16/9] rounded-2xl overflow-hidden border border-slate-100 shadow-2xl shadow-slate-200">
-            <ImageWithLoader 
-              src={designDept}
-              alt="Design Department at work"
-              fill
-              className="object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-        </div>
-
-        {/* Payment Department */}
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
-          {/* Payment Department Image */}
-          <div className="lg:col-span-7 relative aspect-[16/9] rounded-2xl overflow-hidden border border-slate-100 shadow-2xl shadow-slate-200">
-            <ImageWithLoader 
-              src={paymentDept}
-              alt="Payment Department processing"
-              fill
-              className="object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-          
-          {/* Payment Department Text */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="flex items-center gap-2 mb-2">
-              <div  />
-              <Wallet size={24} className="text-blue-500" />
-              <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400">Payment</h2>
-            </div>
-            <h3 className="text-3xl font-bold tracking-tight text-slate-900 leading-tight">
-              Contract & Payment Department
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              Ensuring efficient and economical project management through meticulous contract administration, cost estimation, and quality control solutions.
-            </p>
-          </div>
-        </div>
-
-      </section>
-
-      {/* 3. Staff Recognition Feature Section */}
-      <section className="bg-slate-950 text-white py-24 relative overflow-hidden">
-        {/* Star icon effect */}
-        <div className="absolute top-10 right-10 opacity-10">
-          <Star size={120} className="text-yellow-400" />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-6 lg:px-20 grid lg:grid-cols-12 gap-16 items-center">
-          {/* Text content */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="flex items-center gap-2 mb-2">
-              <Award size={24} className="text-blue-400" />
-              <h2 className="text-xs font-black tracking-[0.3em] uppercase text-blue-300">Recognition</h2>
-            </div>
-            <h3 className="text-3xl md:text-4xl font-black tracking-tight text-white leading-tight">
-              Celebrating Excellence & Innovation
-            </h3>
-            <p className="text-slate-300 leading-relaxed">
-              We foster a partnership-driven and creative work environment. Recognizing outstanding performance is fundamental to promoting quality control solutions and achieving efficient project delivery.
-            </p>
-          </div>
-          
-          {/* Image - now with professional borders and shadows */}
-          <div className="lg:col-span-7 relative aspect-[16/9] rounded-[2.5rem] overflow-hidden border border-slate-700 shadow-[0_30px_70px_rgba(59,130,246,0.1)]">
-            <ImageWithLoader 
-              src={recognition}
-              alt="HH Consulting Staff Recognition Ceremony"
-              fill
-              className="object-cover transition-all duration-700 hover:scale-105"
-            />
-            {/* Overlay for professionalism */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-slate-950/10" />
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Company Cores Recap (Optional, for continuity) */}
-      <section id="cores-recap" className="px-6 lg:px-20 py-24 max-w-7xl mx-auto text-center">
-          <div className="p-16 bg-slate-50 rounded-[3rem] border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-10">
-              <div className="flex gap-2 items-center mb-6 md:mb-0">
-                  <Star size={16} className="text-blue-500" />
-                  <span className="text-[10px] font-black tracking-[0.3em] uppercase text-gray-400">Driven by values</span>
-              </div>
-              <p className="text-sm font-bold text-slate-900 flex items-center gap-3">
-                  <Star size={16} className="text-slate-400" /> Passion for automated solutions
-              </p>
-              <p className="text-sm font-bold text-slate-900 flex items-center gap-3">
-                  <Star size={16} className="text-slate-400" /> Contribution to efficient project management
-              </p>
-              <p className="text-sm font-bold text-slate-900 flex items-center gap-3">
-                  <Star size={16} className="text-slate-400" /> Promotes quality control solutions
-              </p>
-          </div>
-      </section>
-
+    <div className="group relative bg-white aspect-[4/4] overflow-hidden">
+      <ImageWithLoader src={member.src} alt={member.alt} width={520} height={520} className="transition-transform duration-700 group-hover:scale-110" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
       
-    </main>
+      <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <span className="text-[9px] font-black text-[#E5A343] tracking-[0.3em] uppercase">{label}</span>
+        <h5 className="text-white text-lg font-bold tracking-tight mt-1 capitalize">
+          {member.alt.replace(/_/g, ' ')}
+        </h5>
+      </div>
+      
+      <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-[#E5A343] opacity-0 group-hover:opacity-100 transition-all duration-700" />
+    </div>
   );
 }
 
-/* Reusable Sub-Component for individual cards */
-function StaffCard({ member, label }: { member: any, label: string }) {
+/** * 3. MAIN PAGE COMPONENT
+ */
+export default function StaffPage() {
   return (
-    <div className="relative aspect-square overflow-hidden bg-slate-50 border border-slate-100 transition-all duration-500 hover:border-blue-200">
-      <ImageWithLoader 
-        src={member.src}
-        alt={member.alt}
-        fill
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-        <p className="text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">{label}</p>
-        <p className="text-white text-xs font-medium uppercase tracking-widest">
-          {member.alt.replace(/_/g, ' ')}
-        </p>
+    <main className="min-h-screen bg-white font-sans antialiased">
+      
+      {/* HEADER: Architectural Title Block */}
+      <header className="relative pt-40 pb-24 bg-white border-b border-slate-200 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20">
+          <div className="flex flex-col lg:flex-row gap-15">
+            <div className="">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-2 h-2 bg-[#E5A343]" />
+                <span className="text-[11px] font-black uppercase tracking-[0.5em] text-[#E5A343]">
+                  Human Capital
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-[900] tracking-tighter text-slate-900 leading-[0.85] mb-8">
+                THE <span className="text-[#E5A343]">TEAMS</span> <br />
+                <span className="text-slate-200">VISIONARIES</span>
+              </h1>
+            </div>
+            <div className="flex lg:max-w-sm pb-4 items-center">
+              <p className="text-slate-500 leading-relaxed font-medium border-l-2 border-slate-100 pl-6">
+                "A multidisciplinary collective of architects and engineers dedicated to visionary design and technical excellence across Ethiopia."
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* STAFF GALLERY */}
+      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-20">
+        
+        {/* Tier 1: Leadership */}
+        <div className="mb-24">
+          <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-10 text-center">
+            Executive Leadership
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-100 border border-slate-100 max-w-4xl mx-auto">
+            {staff.filter(m => m.alt.includes('manager')).map((member, index) => (
+              <StaffCard key={index} member={member} label="Leadership" />
+            ))}
+          </div>
+        </div>
+
+        {/* Tier 2: Administration */}
+        <div className="mb-24">
+          <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-10 text-center">
+            Front Office & Administration
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-100 border border-slate-100 max-w-4xl mx-auto">
+            {staff.filter(m => m.alt.includes('receptionist')).map((member, index) => (
+              <StaffCard key={index} member={member} label="Admin" />
+            ))}
+          </div>
+        </div>
+
+        {/* Tier 3: Technical Team (Full Width) */}
+        <div className="group relative aspect-video overflow-hidden border border-slate-200 bg-slate-50">
+           {staff.filter(m => m.alt.includes('staff_member')).map((member, index) => (
+             <ImageWithLoader 
+               key={index}
+               src={member.src} 
+               alt={member.alt} 
+               fill 
+               className="transition-transform duration-1000 group-hover:scale-105" 
+             />
+           ))}
+           <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md p-4 border-l-4 border-[#E5A343]">
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Technical Engineering Corps</span>
+           </div>
+        </div>
+      </section>
+
+      {/* DEPARTMENT SPOTLIGHTS */}
+      <section className="py-24 space-y-32 max-w-7xl mx-auto px-6 lg:px-20">
+        
+        {/* Design Dept */}
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <div className="lg:col-span-5">
+            <span className="text-[10px] font-black text-[#E5A343] tracking-[0.4em] uppercase">Department 01</span>
+            <h3 className="text-4xl font-extrabold tracking-tighter text-slate-900 mt-4 mb-6">Design & Architecture</h3>
+            <p className="text-slate-600 leading-relaxed font-medium">
+              Our visionaries translate abstract concepts into tangible, resilient architectural designs, balancing aesthetics, function, and sustainability.
+            </p>
+          </div>
+          <div className="lg:col-span-7 relative aspect-video group overflow-hidden border-8 border-slate-50 shadow-2xl">
+            <ImageWithLoader src={designDept} alt="Design Dept" fill />
+          </div>
+        </div>
+
+        {/* Contract Dept */}
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <div className="lg:col-span-7 order-2 lg:order-1 relative aspect-video border-8 border-slate-50 shadow-2xl">
+            <ImageWithLoader src={paymentDept} alt="Payment Dept" fill />
+          </div>
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <span className="text-[10px] font-black text-[#E5A343] tracking-[0.4em] uppercase">Department 02</span>
+            <h3 className="text-4xl font-extrabold tracking-tighter text-slate-900 mt-4 mb-6">Contract & Quality Control</h3>
+            <p className="text-slate-600 leading-relaxed font-medium">
+              Ensuring efficient and economical project management through meticulous contract administration and robust quality control solutions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* RECOGNITION FEATURE */}
+      <section className="bg-slate-50 py-32 relative overflow-hidden">
+        <div className="absolute top-10 right-10 opacity-[0.05]">
+          <Star size={200} className="text-[#E5A343]" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-20 grid lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <div className="flex items-center gap-4 mb-8">
+               <Award size={32} className="text-[#E5A343] stroke-1" />
+               <div className="h-px w-12 bg-[#E5A343]/50" />
+            </div>
+            <h2 className="text-5xl font-black tracking-tighter text-slate-900 mb-8 ">Celebrating <br/> Excellence.</h2>
+            <p className="text-slate-600 leading-relaxed font-medium">
+              "We foster a creative work environment where outstanding performance is recognized as fundamental to our engineering legacy."
+            </p>
+          </div>
+          <div className="relative aspect-[4/3] border-[12px] border-slate-900 shadow-3xl overflow-hidden rounded-sm">
+            <ImageWithLoader 
+              src={recognition} 
+              alt="Recognition" 
+              fill 
+              className="hover:grayscale-0 transition-all duration-700" 
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* CORES RECAP */}
+      <footer className="bg-[#1a364b] text-white py-20 px-6 flex flex-col items-center justify-center text-center">
+      {/* Logo Container */}
+      <div className="mb-8 relative w-20 h-20">
+        <Image 
+          src={logo} // Ensure your logo import matches this variable name
+          alt="HH Consulting Logo" 
+          fill 
+          className="object-contain brightness-0 invert" // Inverts to white if the original is dark
+        />
       </div>
-    </div>
+
+      {/* Company Name English */}
+      <h2 className="text-lg md:text-xl font-medium tracking-[0.15em] uppercase mb-2">
+        HH Consulting Architects & Engineers PLC.
+      </h2>
+
+      {/* Company Name Amharic */}
+      <h2 className="text-xl md:text-2xl font-bold mb-12">
+        ኤች ኤች አማካሪ አርክቴክቶች እና መሐንዲሶች
+      </h2>
+
+      {/* Slogan */}
+      <p className="text-slate-300 text-base md:text-lg font-light italic tracking-wide">
+        "For any international projects, we are 
+          your dedicated global partner in 
+          design and construction supervision."
+      </p>
+      
+      {/* Optional: Developer Credit / Copyright */}
+      <div className="mt-16 pt-8 border-t border-white/10 w-full max-w-4xl text-xs text-slate-500 uppercase tracking-[0.2em]">
+        © {new Date().getFullYear()} HH Consulting. All Rights Reserved.
+      </div>
+    </footer>
+
+    </main>
   );
 }

@@ -44,7 +44,7 @@ export default function Certificate() {
   const [selectedImg, setSelectedImg] = useState<null | typeof certificates[0]>(null);
 
   return (
-    <section id="certificates" className="w-full py-15 lg:py-1 bg-[#FAFBFC] font-poppins">
+    <section id="certificates" className="w-full py-15 lg:py-24 bg-[#FAFBFC] font-poppins">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
         {/* --- Header --- */}

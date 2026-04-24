@@ -105,7 +105,7 @@ const FeasibilitySection = () => {
           <span className="absolute -top-10 -left-10 text-[120px] font-black text-slate-50 select-none -z-10">01</span>
           <div className="relative z-10">
             <span className="text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.4em] text-[#E5A343] block mb-6">Technical Excellence</span>
-            <h2 className="text-5xl lg:text-7xl font-[800] text-slate-900 tracking-[-0.04em] leading-[1.05] mb-4 title-mask">
+            <h2 className="text-4xl lg:text-5xl font-[800] text-slate-900 tracking-[-0.04em] leading-[1.05] mb-4 title-mask">
               <span className="title-text">Feasibility <span className="text-[#E5A343]">Study.</span></span>
             </h2>
           </div>

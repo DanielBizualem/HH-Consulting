@@ -8,6 +8,7 @@ import Road from '@/components/Road';
 import Irrigation from '@/components/Irrigation';
 import Bridge from '@/components/Bridge';
 import Others from '@/components/Other';
+import React from 'react';
 const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776110480/favicon-Photoroom_a5bibi.png'
 
 const ImageWithLoader = (props: ImageProps) => {
@@ -124,26 +125,26 @@ export default function BuildingDesignPage() {
 
         {/* 1. ARCHITECTURAL APPROACH (The "How") */}
         <section className="grid grid-cols-2 md:grid-cols-4 gap-px bg-slate-100 border border-slate-100 mb-32 overflow-hidden">
+              <ApproachCard 
+            icon={<Ruler size={22} strokeWidth={1} className="text-[#E5A343]" />} 
+            title="Precision"
+            number="01"
+            desc="Surgical accuracy in technical drafting and structural detailing."
+              />
             <ApproachCard 
-              icon={<Ruler size={22} weight="thin" />} 
-              title="Precision" 
-              number="01"
-              desc="Surgical accuracy in technical drafting and structural detailing." 
-            />
-            <ApproachCard 
-              icon={<Compass size={22} weight="thin" />} 
+              icon={<Compass size={22} strokeWidth={1} className="text-[#E5A343]" />} 
               title="Context" 
               number="02"
               desc="Respecting site-specific orientation and ecological integration." 
             />
-            <ApproachCard 
-              icon={<Layers size={22} weight="thin" />} 
+            <ApproachCard
+              icon={<Layers size={22} strokeWidth={1} className="text-[#E5A343]" />} 
               title="Structure" 
               number="03"
               desc="Advanced material optimization for integrity and longevity." 
             />
             <ApproachCard 
-              icon={<Maximize2 size={22} weight="thin" />} 
+              icon={<Maximize2 size={22} strokeWidth={1} className="text-[#E5A343]" />} 
               title="Scale" 
               number="04"
               desc="Designing for the human experience through proportional harmony." 
@@ -956,29 +957,45 @@ export default function BuildingDesignPage() {
   );
 }
 
-const ApproachCard = ({ icon, title, desc, number }) => (
-  <div className="group relative bg-white p-8 lg:p-10 transition-all duration-500 hover:bg-slate-50">
-    {/* Corner Accent */}
+interface ApproachCardProps {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  number: string;
+}
+
+const ApproachCard = ({ icon, title, desc, number }: ApproachCardProps) => (
+  <div className="group relative bg-white p-8 lg:p-10 transition-all duration-500 hover:bg-slate-50 overflow-hidden cursor-default">
+    
+    {/* 1. Corner Accent: Architectural "L" Bracket */}
     <div className="absolute top-0 right-0 w-0 h-0 border-t-[1px] border-r-[1px] border-[#E5A343] transition-all duration-500 group-hover:w-4 group-hover:h-4" />
     
     <div className="flex justify-between items-start mb-8">
-      <div className="text-slate-900 group-hover:text-[#E5A343] transition-colors duration-500">
+      {/* Icon with hover color shift */}
+      <div className="text-slate-900 group-hover:text-[#E5A343] transition-colors duration-500 transform group-hover:scale-110">
         {icon}
       </div>
-      <span className="text-[10px] font-black text-slate-200 group-hover:text-[#E5A343]/30 transition-colors">
+      
+      {/* Engineering Numbering */}
+      <span className="text-[10px] font-black text-slate-200 group-hover:text-[#E5A343]/30 transition-colors tracking-widest">
         {number}
       </span>
     </div>
 
-    <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900 mb-3">
+    {/* Section Title */}
+    <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900 mb-3 antialiased">
       {title}
     </h3>
     
+    {/* Content */}
     <p className="text-[11px] leading-relaxed text-slate-500 font-medium group-hover:text-slate-700 transition-colors">
       {desc}
     </p>
 
-    {/* Bottom Progress Line */}
-    <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#E5A343] transition-all duration-700 group-hover:w-full" />
+    {/* 2. Bottom Progress Line: Serves as a "Loading" or "Complete" marker */}
+    <div 
+      className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#E5A343] transition-all duration-700 ease-in-out group-hover:w-full" 
+      aria-hidden="true"
+    />
   </div>
 );

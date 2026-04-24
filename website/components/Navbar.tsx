@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, Home, Layout, Users, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -69,10 +69,10 @@ export default function Navbar() {
   };
 
   const mobileBottomLinks = [
-    { name: 'Home', href: '/', icon: <Home size={20} /> },
-    { name: 'Design', href: '/building-design', icon: <Layout size={20} /> },
-    { name: 'Team', href: '/staff', icon: <Users size={20} /> },
-    { name: 'Events', href: '/events', icon: <Calendar size={20} /> },
+    { name: 'Home', href: '/', icon: <Home size={18} /> },
+    { name: 'Design', href: '/building-design', icon: <Layout size={18} /> },
+    { name: 'Team', href: '/staff', icon: <Users size={18} /> },
+    { name: 'Events', href: '/events', icon: <Calendar size={18} /> },
   ];
 
   return (
@@ -220,29 +220,34 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* FLOATING MOBILE BOTTOM NAVIGATION BAR */}
-      <div className={cn(
-        "fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] lg:hidden transition-all duration-500 w-[92%] max-w-md",
-        showBottomNav && !isOpen ? "translate-y-0 opacity-100" : "translate-y-24 opacity-0 pointer-events-none"
-      )}>
-        <div className="bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl px-6 py-3 flex justify-between items-center">
-          {mobileBottomLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link 
-                key={link.name} 
-                href={link.href}
-                className={cn("flex flex-col items-center gap-1 transition-all duration-300", isActive ? "text-[#E5A343]" : "text-slate-400 hover:text-white")}
-              >
-                <div className={cn("p-2 rounded-xl transition-all", isActive ? "bg-[#E5A343]/10" : "bg-transparent")}>
-                  {link.icon}
-                </div>
-                <span className="text-[9px] font-bold uppercase tracking-tighter">{link.name}</span>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
+      {/* SLIM FULL-WIDTH MOBILE BOTTOM NAVIGATION BAR */}
+<div className={cn(
+  "fixed bottom-0 left-0 right-0 z-[200] lg:hidden transition-all duration-500 w-full",
+  showBottomNav && !isOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
+)}>
+  <div className="bg-slate-900/95 backdrop-blur-md border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)] px-4 py-2 pb-5 flex justify-between items-center">
+    {mobileBottomLinks.map((link) => {
+      const isActive = pathname === link.href;
+      return (
+        <Link 
+          key={link.name} 
+          href={link.href}
+          className={cn(
+            "flex flex-col items-center justify-center transition-all duration-300 flex-1",
+            isActive ? "text-[#E5A343]" : "text-slate-500"
+          )}
+        >
+          <div className="p-1.5 transition-all">
+            {link.icon}
+          </div>
+          <span className="text-[8px] font-black uppercase tracking-tighter leading-none">
+            {link.name}
+          </span>
+        </Link>
+      );
+    })}
+  </div>
+</div>
     </>
   );
 }

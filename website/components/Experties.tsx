@@ -41,7 +41,7 @@ export default function Expertise() {
   ];
 
   return (
-    <section id="expertise" className="w-full py-24 lg:py-32 bg-[#FAFBFC] font-poppins overflow-hidden">
+    <section id="expertise" className="w-full lg:py-18 bg-[#FAFBFC] font-poppins overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
         {/* --- Section Header --- */}

@@ -29,7 +29,7 @@ export default function Mission() {
   ];
 
   return (
-    <section id="philosophy" className="w-full py-24 lg:py-7 bg-[#FAFBFC] font-poppins overflow-hidden">
+    <section id="philosophy" className="w-full lg:py-7 bg-[#FAFBFC] font-poppins overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
         {/* --- Section Header --- */}

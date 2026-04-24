@@ -15,7 +15,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="relative py-3 md:py-18 font-sans antialiased overflow-hidden bg-slate-50">
+    <section className="relative py-15 md:py-18 font-sans antialiased overflow-hidden bg-slate-50">
       
       {/* PROFESSIONAL BACKGROUND LAYER */}
       <div className="absolute inset-0 z-0">

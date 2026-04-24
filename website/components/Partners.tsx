@@ -45,7 +45,7 @@ const partners = [
 
 export default function Partners() {
   return (
-    <section id="clients" className="w-full py-24 bg-white border-t border-slate-100 font-poppins overflow-hidden">
+    <section id="clients" className="w-full py-15 bg-white border-t border-slate-100 font-poppins overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-20">
         
         {/* --- Header --- */}

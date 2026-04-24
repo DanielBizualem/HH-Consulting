@@ -36,7 +36,7 @@ const FeasibilitySection = () => {
     <section 
       ref={sectionRef}
       id="feasibility_study" 
-      className="relative isolate w-full py-24 lg:py-18 bg-white border-t border-gray-100 font-sans antialiased overflow-hidden"
+      className="relative isolate w-full py-15 lg:py-18 bg-white border-t border-gray-100 font-sans antialiased overflow-hidden"
     >
       <style>{`
         @keyframes slow-rotate {

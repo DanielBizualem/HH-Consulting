@@ -1,69 +1,71 @@
+import React from 'react';
 import Image from 'next/image';
+import { 
+  Building2, Map, HardHat, ClipboardCheck, 
+  MapPin, Leaf, Construction, Truck, Droplets, CheckCircle2 
+} from 'lucide-react';
 
 export default function Services() {
   const services = [
-    "Building Design",
-    "Urban Design and Planning",
-    "Infrastructure",
-    "Terminal Design",
-    "Road Works",
-    "Irrigation",
-    "Feasibility Study",
-    "Topography Survey",
-    "Landscape Design and Specification",
-    "Contract Administration and Supervision(Quality Control)"
+    { title: "Building Design", desc: "Architectural, Structural, MEP", icon: <Building2 size={24} /> },
+    { title: "Urban Design & Planning", desc: "Urban design & planning works", icon: <Map size={24} /> },
+    { title: "Infrastructure", desc: "General civil infrastructure", icon: <HardHat size={24} /> },
+    { title: "Terminal Design", desc: "Transport hub specifications", icon: <Truck size={24} /> },
+    { title: "Road Works", desc: "Highways & local roads", icon: <Construction size={24} /> },
+    { title: "Irrigation", desc: "Water management systems", icon: <Droplets size={24} /> },
+    { title: "Feasibility Study", desc: "Planning & analysis", icon: <ClipboardCheck size={24} /> },
+    { title: "Topography Survey", desc: "Accurate land & site data", icon: <MapPin size={24} /> },
+    { title: "Landscape Design", desc: "Outdoor & environmental", icon: <Leaf size={24} /> },
+    { title: "Contract Admin", desc: "Quality Control & Supervision", icon: <CheckCircle2 size={24} /> },
   ];
 
   return (
-    <section className="relative py-15 md:py-18 font-sans antialiased overflow-hidden bg-slate-50">
+    <section className="relative py-12 md:py-20 bg-[#F1F3F6] font-sans antialiased overflow-hidden">
       
-      {/* PROFESSIONAL BACKGROUND LAYER */}
+      {/* CONSTRUCTION BACKGROUND LAYER */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://res.cloudinary.com/djxfy60tt/image/upload/v1776890922/globe_u2i4yv.png" 
-          alt="Background Pattern"
+          // You can replace this URL with your specific construction site image
+          src="https://res.cloudinary.com/djxfy60tt/image/upload/v1777371366/construction01_evsrsy.png" 
+          alt="Construction Background"
           fill
-          className="object-cover opacity-10 md:opacity-15"
+          className="object-cover opacity-[0.35] md:opacity-[0.35]"
           priority
         />
-        
-        {/* Architectural Grid Overlay - Responsive density */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:30px_30px] md:bg-[size:40px_40px]" />
-        
-        {/* Soft Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-transparent to-slate-50" />
+        {/* Soft Gradient to blend the background edges */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F1F3F6] via-transparent to-[#F1F3F6]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-18">
+        
         {/* Header Section */}
-        <div className="mb-12 md:mb-16 border-l-4 border-[#E5A343] pl-5 md:pl-6">
-          <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-[#E5A343] block mb-2">
-            Our Excellence
-          </span>
-          <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            OUR <span className="text-[#E5A343]">SERVICES.</span>
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[#1A1A1A] mb-1">
+            Our Services
           </h2>
+          <p className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest">
+            Comprehensive Engineering & Design Solutions
+          </p>
         </div>
 
-        {/* Services Grid: 1 col on mobile, 2 on tablet, 4 on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {services.map((service, index) => (
+        {/* Mobile: 2 Columns | Desktop: 3 Columns */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+          {services.map((item, index) => (
             <div 
               key={index}
-              className="group relative p-6 md:p-8 rounded-xl md:rounded-2xl border border-slate-200/60 bg-white/90 backdrop-blur-md hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500 ease-out"
+              className="group flex flex-col items-center text-center p-5 md:p-8 bg-white/80 backdrop-blur-md rounded-xl border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl transition-all duration-300"
             >
-              {/* Subtle Numbering: Smaller on mobile */}
-              <span className="text-3xl md:text-4xl font-black text-slate-50 group-hover:text-[#E5A343]/10 transition-colors duration-500 absolute top-4 right-6 select-none">
-                {index + 1 < 10 ? `0${index + 1}` : index + 1}
-              </span>
+              <div className="mb-3 md:mb-4 text-[#C59D5F] group-hover:scale-110 transition-transform duration-300">
+                {item.icon}
+              </div>
 
-              <div className="relative z-10 mt-2 md:mt-4">
-                <h3 className="text-base md:text-lg font-bold text-slate-800 leading-snug group-hover:text-slate-900">
-                  {service}
+              <div className="space-y-1">
+                <h3 className="text-[12px] md:text-lg font-black text-[#1A1A1A] leading-tight">
+                  {item.title}
                 </h3>
-                
-                {/* Decorative Accent Line */}
-                <div className="mt-4 h-[2px] w-6 bg-slate-200 group-hover:w-12 group-hover:bg-[#E5A343] transition-all duration-500" />
+                <p className="text-[9px] md:text-[11px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             </div>
           ))}

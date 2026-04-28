@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge';
 import { clsx, type ClassValue } from 'clsx';
 import Image from 'next/image';
 
-const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776340102/company_logo-Photoroom_hmbhoz.png'
+const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1777373171/company_logo02-Photoroom_o8w8zb.png'
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -93,8 +93,8 @@ export default function Navbar() {
               width={195} 
               height={75}
               className={cn(
-               "w-35 md:w-42.5 lg:w-48.75 h-auto", 
-                "object-contain transition-all", 
+               "w-45 md:w-45.5 lg:w-55.75 h-auto", 
+                "object-contain transition-all drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]", 
                 !isDarkText && "brightness-0 invert"
               )}
               priority

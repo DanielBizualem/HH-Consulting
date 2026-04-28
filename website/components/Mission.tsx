@@ -1,8 +1,18 @@
 "use client";
 import { Diamond, Target, Lightbulb, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { useRef } from "react";
 
 export default function Mission() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+
   const cards = [
     {
       title: "Mission",
@@ -29,39 +39,60 @@ export default function Mission() {
   ];
 
   return (
-    <section id="philosophy" className="w-full lg:py-7 bg-[#FAFBFC] font-poppins overflow-hidden">
+    <section ref={containerRef} id="philosophy" className="w-full lg:py-20 bg-[#FAFBFC] font-poppins overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
-        {/* --- Section Header --- */}
-        <header className="relative mb-20">
+        {/* --- Section Header & 3D Visual --- */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mt-15 sm:mt-0 md:mb-24">
+          <header className="relative">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 mb-6"
+            >
+              <div className="h-[1px] w-12 bg-[#E5A343]" />
+              <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#E5A343]">
+                Company Philosophy
+              </span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-5xl lg:text-7xl font-[800] text-slate-900 tracking-tight leading-[0.9]"
+            >
+              <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight">
+                OUR <span className="text-[#E5A343]">CORES.</span>
+              </h2>
+            </motion.div>
+            <p className="mt-8 text-slate-500 max-w-md text-sm leading-relaxed font-medium">
+              Bridging architectural imagination with structural precision through 
+              advanced project management and industrial innovation.
+            </p>
+          </header>
+
+          {/* 3D Isometric Visual Container */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-4 mb-6"
+            style={{ y }}
+            className="relative h-[350px] w-full rounded-[3rem] overflow-hidden border-8 border-slate-50"
           >
-            <div className="h-[1px] w-12 bg-[#E5A343]" />
-            <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#E5A343] antialiased">
-              Company Philosophy
-            </span>
+            <Image 
+              src="https://res.cloudinary.com/djxfy60tt/image/upload/v1777372530/construction03_jppag9.png" // Use your construction_emoji.png URL here
+              alt="3D Isometric City Construction"
+              fill
+              className="object-cover brightness-110 contrast-105"
+            />
+            {/* Architectural Grid Overlay */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none" 
+                 style={{ backgroundImage: 'radial-gradient(#E5A343 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }} />
           </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl lg:text-7xl font-[800] text-slate-900 tracking-tight leading-[0.9] mb-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            OUR <span className="text-[#E5A343]">CORES.</span>
-          </h2>
-          </motion.div>
-        </header>
+        </div>
 
         {/* --- The Technical Grid --- */}
         <div className="grid grid-cols-1 lg:grid-cols-3 bg-white rounded-[2.5rem] shadow-2xl shadow-slate-200/50 overflow-hidden border border-slate-100">
-          
           {cards.map((item, index) => (
             <motion.div
               key={index}
@@ -101,7 +132,6 @@ export default function Mission() {
                 )}
               </div>
 
-              {/* Subtle Bottom Accent */}
               <div className="mt-12 flex justify-between items-end">
                 <span className={`text-[10px] font-black tracking-widest uppercase opacity-20 
                   ${item.dark ? 'text-white' : 'text-slate-900'}`}>
@@ -119,7 +149,6 @@ export default function Mission() {
               )}
             </motion.div>
           ))}
-
         </div>
       </div>
     </section>

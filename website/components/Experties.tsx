@@ -45,7 +45,7 @@ export default function Expertise() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
         {/* --- Section Header --- */}
-        <header className="relative mb-24 max-w-3xl">
+        <header className="relative mt-15 sm:mt-0 mb-5 md:mb-24 max-w-3xl">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}

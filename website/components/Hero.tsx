@@ -106,7 +106,7 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-black tracking-[-0.05em] leading-[0.85] mb-10 uppercase animate-reveal-main">
+          <h1 className="text-3xl space-x-3  md:text-5xl font-black tracking-[-0.05em] leading-[0.85] mb-10 uppercase animate-reveal-main">
             {slides[currentSlide].title}
           </h1>
 
@@ -154,14 +154,14 @@ export default function Hero() {
             </span>
             
             {/* Progress Bar (Minimal Line) */}
-            <div className="relative w-12 h-[2px] bg-white/10 overflow-hidden">
+            <div className="relative w-6 sm:w-10 md:w-16 lg:w-24 h-[2px] bg-white/10 overflow-hidden">
               {i === currentSlide && (
                 <div 
                   className="absolute top-0 left-0 h-full bg-[#E5A343] transition-none"
                   style={{ width: `${progress}%` }}
                 />
               )}
-            </div>
+          </div>
           </button>
         ))}
       </div>

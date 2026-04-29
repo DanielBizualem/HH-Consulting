@@ -91,7 +91,7 @@ export default function Expertise() {
           </div>
 
           {/* --- RIGHT SIDE: THE VISUAL --- */}
-          <div className="flex flex-col w-full lg:w-2/5 relative min-h-[500px] mr-10 lg:min-h-screen mt-3">
+          <div className="flex flex-col w-full lg:w-2/5 relative min-h-[250px] mr-10 lg:min-h-screen mt-3">
             <Image 
               src={constructionVisual} 
               alt="Engineering Excellence"

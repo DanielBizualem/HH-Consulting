@@ -40,9 +40,9 @@ export default function Services() {
         
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-16">
-          <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[#1A1A1A] mb-1">
-            Our Services
-          </h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                OUR <span className="text-[#E5A343]">SERVICE.</span>
+              </h2>
           <p className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest">
             Comprehensive Engineering & Design Solutions
           </p>

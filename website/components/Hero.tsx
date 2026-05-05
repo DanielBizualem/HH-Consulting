@@ -54,18 +54,18 @@ export default function Hero() {
           </h1>
 
           <div className="flex flex-row items-center justify-center lg:justify-start gap-3 animate-fade-in-delayed w-full">
-            <Link href="/#service" className="w-auto">
-            <button className="bg-[#b38b59] hover:bg-[#9a764a] text-white px-3 py-3 rounded-sm text-[12px] font-bold uppercase tracking-[0.3em] transition-all shadow-xl active:scale-95 z-30 mb-12 lg:mb-0">
-              Explore Services
-            </button>
-            </Link>
+  <Link href="/#service" className="w-auto">
+    <button className="bg-[#b38b59] hover:bg-[#9a764a] text-white px-4 py-3 rounded-sm text-[10px] sm:text-[12px] font-bold uppercase tracking-[0.15em] lg:tracking-[0.3em] transition-all shadow-xl active:scale-95 z-30 lg:mb-0">
+      Explore Services
+    </button>
+  </Link>
 
-            <Link href="/#location" className="w-auto">
-              <button className="px-8 py-3 bg-black/20 backdrop-blur-md border border-white/60 text-white rounded-sm font-bold text-[10px] uppercase tracking-wider">
-                Contact Us
-              </button>
-            </Link>
-          </div>
+  <Link href="/#location" className="w-auto">
+    <button className="bg-black/20 backdrop-blur-md border border-white/60 text-white px-6 py-3 rounded-sm text-[10px] sm:text-[12px] font-bold uppercase tracking-wider transition-all hover:bg-white/10 active:scale-95">
+      Contact Us
+    </button>
+  </Link>
+</div>
         </div>
 
         {/* GLASS CARD: Hidden on mobile */}

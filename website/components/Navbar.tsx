@@ -14,9 +14,10 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const homeLinks = [
-  { name: 'Mission, Vision, Value', href: '/#profile' },
-  { name: 'Who We Are', href: '/#about' },
+  { name: 'Services', href: '/#services' },
   { name: 'Our Expertise', href: '/#expertise' },
+  { name: 'Who We Are', href: '/#about' },
+  { name: 'Mission, Vision, Value', href: '/#profile' },
   { name: 'Certificates', href: '/#certificates' },
   { name: 'Potential Clients', href: '/#clients' },
   { name: 'Feasibility Study', href: '/#feasibility_study' },
@@ -52,7 +53,10 @@ export default function Navbar() {
 
   // Always use dark text since the background is now always white
   const navLinkStyle = cn(
-    "text-[12px] uppercase font-bold tracking-[0.2em] transition-all duration-300 relative py-1 text-slate-900 hover:text-blue-600"
+    "text-[11px] font-bold uppercase tracking-[0.25em]", 
+    "text-slate-600 transition-all duration-300 relative py-2",
+    "hover:text-[#C59D5F] hover:tracking-[0.3em]", // Subtle expansion on hover
+    "after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#C59D5F] after:transition-all after:duration-300 hover:after:w-full"
   );
 
   const toggleSection = (section: string) => {
@@ -63,7 +67,7 @@ export default function Navbar() {
     <>
       <nav className={cn(
         "fixed top-0 w-full z-[100] transition-all duration-500 lg:px-10",
-        "bg-white shadow-sm", // Forced white background for all screens
+        "bg-white opacity-92 shadow-sm", // Forced white background for all screens
         scrolled ? "py-3" : "py-3 lg:py-3" // Subtle height transition on scroll
       )}>
         <div className="max-w-7xl h-10 mx-auto flex justify-between items-center">
@@ -81,7 +85,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-9">
             <div className="relative group">
               <Link href="/" className={navLinkStyle}>
                 <span className="flex items-center gap-1">
@@ -98,11 +102,10 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
-
             <div className="relative group">
               <Link href="/building-design" className={navLinkStyle}>
                 <span className="flex items-center gap-1">
-                  Building Design
+                  Projects
                   <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform" />
                 </span>
                 {pathname === '/building-design' && <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 rounded-full" />}
@@ -115,12 +118,15 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
-
             <Link href="/staff" className={navLinkStyle}>Our Team</Link>
             <Link href="/events" className={navLinkStyle}>Events</Link>
             
-            <Link href="/#location" className="hidden lg:block px-6 py-2 text-[11px] font-bold uppercase tracking-[0.2em] border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-500 ml-4">
-              Contact Us
+            <Link href="/#location">
+              <button className="group relative overflow-hidden px-5 py-3 bg-[#C59D5F] text-white rounded font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:text-black">
+                <span className="relative z-10 flex items-center gap-3">
+                  Get In Touch
+                </span>
+              </button>
             </Link>
           </div>
 

@@ -10,10 +10,11 @@ const config: Config = {
     extend: {
       fontFamily: {
         // This makes Inter the primary sans-serif font
-        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
       },
     },
   },
+
   plugins: [
     require('tailwind-scrollbar'),
   ],

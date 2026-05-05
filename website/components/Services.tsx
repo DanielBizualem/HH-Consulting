@@ -20,7 +20,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="relative py-12 md:py-20 bg-[#F1F3F6] font-sans antialiased overflow-hidden">
+    <section className="relative py-12 md:py-20 bg-[#F1F3F6] font-sans antialiased overflow-hidden" id='service'>
       
       {/* CONSTRUCTION BACKGROUND LAYER */}
       <div className="absolute inset-0 z-0">
@@ -29,7 +29,7 @@ export default function Services() {
           src="https://res.cloudinary.com/djxfy60tt/image/upload/v1777371366/construction01_evsrsy.png" 
           alt="Construction Background"
           fill
-          className="object-cover opacity-[0.35] md:opacity-[0.35]"
+          className="object-cover opacity-5 md:opacity-[0.08]"
           priority
         />
         {/* Soft Gradient to blend the background edges */}

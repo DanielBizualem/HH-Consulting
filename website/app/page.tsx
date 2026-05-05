@@ -59,6 +59,10 @@ export default function HomePage() {
       
       <Hero/>
       {/* 1. WHO WE ARE */}
+      <Services/>
+      {/* 3. EXPERTISE */}
+      <Expertise/>
+      
       <section id="about" className="w-full py-24 lg:py-20 bg-[#f8f9fa] font-poppins overflow-hidden font-sans text-slate-200 antialiased animate-border-glow">
         
   <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
@@ -146,13 +150,12 @@ export default function HomePage() {
  
      
      
-     <Services/>
+     
 
       {/* 2. MISSION, VISION, VALUE */}
       <Mission/>
 
-      {/* 3. EXPERTISE */}
-      <Expertise/>
+      
 
       {/* 4. CERTIFICATIONS */}
     <Certificate/>

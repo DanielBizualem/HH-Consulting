@@ -5,21 +5,18 @@ import { Award, Shield, Rocket, Users } from 'lucide-react';
 
 /** * 1. IMAGE ASSETS & DATA */
 const recognition = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065819/staff_recognition_wkn4nd.png';
-const paymentDept = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065590/payement_dept_rbdpqz.png';
-const designDept = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065576/design_dept_nqbogc.png';
 const logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776110480/favicon-Photoroom_a5bibi.png';
-const hugeStaffGroup = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111903/staff_member_vhs8ea.png';
 
 const individualStaff = [
   { src: 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111899/general_manager_kbctoq.png', alt: "General Manager", category: 'leadership', name: "HAILEMICHAEL SOLOMON" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778242733/operation_manager_on9dvh.jpg", alt: 'Operation Manager', category: 'leadership', name: "HIWOT MEZGEBU" },
-  { src: 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776111885/receptionist_bqpgce.png', alt: 'Receptionist', category: 'admin', name: "Helen" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778242733/receptionist_upsant.jpg", alt: 'Receptionist', category: 'admin', name: "Blen Melaku" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778243230/humanResource_kygccl.png", alt: 'Human Resource', category: 'admin', name: "SOLOMON HAILU" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778243223/IT_department_q7lgzo.png", alt: 'IT Department', category: 'technical', name: "Dawit Endale" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778242722/bid_department_djghte.jpg", alt: 'Bid Department', category: 'technical', name: "Kidist Tekilu" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778243230/ScadDepartment_fj1n50.png", alt: 'Scad Department', category: 'technical', name: "Teamir Wondosen" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778242728/Scad_department_okxusf.jpg", alt: 'Scad Department', category: 'technical', name: "Estifanos Mokonen" },
+  {src:"https://res.cloudinary.com/djxfy60tt/image/upload/v1778317962/Finance_Department_j2utsm.jpg", alt:"Finance Department", category:"technical",name:"Dawit Biniam"}
 ];
 
 /** * 2. HELPER COMPONENTS */
@@ -117,56 +114,34 @@ export default function StaffPage() {
         </div>
       </section>
 
-      {/* HUGE GROUP PHOTO */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-20 mb-24 md:mb-32">
-        <div className="relative aspect-[4/3] md:aspect-[16/7] overflow-hidden border border-slate-200 shadow-lg">
-          <ImageWithLoader 
-            src={hugeStaffGroup} 
-            alt="HH Consulting Engineering Corps" 
-            fill 
-            sizes="100vw"
-          />
-        </div>
-      </section>
-
-      {/* DEPARTMENT SPOTLIGHTS */}
-      <section className="py-6 md:py-18 space-y-24 md:space-y-32 max-w-7xl mx-auto px-6 lg:px-20">
-        <div className="grid lg:grid-cols-12 gap-8 md:gap-16 items-center">
-          <div className="lg:col-span-5 text-center lg:text-left">
-            <span className="text-[10px] font-black text-[#E5A343] tracking-[0.4em] uppercase">Architecture</span>
-            <h3 className="text-3xl md:text-4xl font-extrabold tracking-tighter text-slate-900 mt-4 mb-6 leading-tight">Design & Vision</h3>
-            <p className="text-slate-600 text-sm md:text-base leading-relaxed">Translating abstract concepts into tangible, resilient architectural designs.</p>
-          </div>
-          <div className="lg:col-span-7 relative aspect-video border-4 md:border-8 border-slate-50 shadow-xl overflow-hidden">
-            <ImageWithLoader src={designDept} alt="Design Dept" fill sizes="(max-width: 1024px) 100vw, 60vw" />
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-8 md:gap-16 items-center">
-          <div className="lg:col-span-7 order-2 lg:order-1 relative aspect-video border-4 md:border-8 border-slate-50 shadow-xl overflow-hidden">
-            <ImageWithLoader src={paymentDept} alt="Payment Dept" fill sizes="(max-width: 1024px) 100vw, 60vw" />
-          </div>
-          <div className="lg:col-span-5 order-1 lg:order-2 text-center lg:text-left">
-            <span className="text-[10px] font-black text-[#E5A343] tracking-[0.4em] uppercase">Administration</span>
-            <h3 className="text-3xl md:text-4xl font-extrabold tracking-tighter text-slate-900 mt-4 mb-6 leading-tight">Contract Control</h3>
-            <p className="text-slate-600 text-sm md:text-base leading-relaxed">Ensuring project management through meticulous contract administration.</p>
-          </div>
-        </div>
-      </section>
-
       {/* RECOGNITION */}
-      <section className="bg-slate-50 pb-5 md:py-32 border-y border-slate-100 mt-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20 grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div className="text-center lg:text-left">
-            <Award size={32} className="text-[#E5A343] mb-6 md:mb-8 mx-auto lg:mx-0" />
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 mb-6 md:mb-8 italic uppercase">Excellence.</h2>
-            <p className="text-slate-600 font-medium">Outstanding performance is fundamental to our engineering legacy.</p>
-          </div>
-          <div className="relative aspect-[4/3] border-[8px] md:border-[12px] border-slate-900 shadow-2xl overflow-hidden">
-            <ImageWithLoader src={recognition} alt="Recognition" fill sizes="(max-width: 1024px) 100vw, 50vw" />
-          </div>
-        </div>
-      </section>
+<section className="bg-slate-50 py-16 md:py-32 border-y border-slate-100 mt-20">
+  <div className="max-w-7xl mx-auto px-6 lg:px-20 grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+    
+    <div className="text-center lg:text-left">
+      <Award size={32} className="text-[#E5A343] mb-6 md:mb-8 mx-auto lg:mx-0" />
+      <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 mb-6 md:mb-8 italic uppercase">
+        Excellence.
+      </h2>
+      <p className="text-slate-600 font-medium">
+        Outstanding performance is fundamental to our engineering legacy.
+      </p>
+    </div>
+
+    {/* The Image Container */}
+    <div className="relative aspect-[4/3] border-[8px] md:border-[12px] border-slate-900 shadow-2xl overflow-hidden bg-white">
+      <ImageWithLoader 
+        src={recognition} 
+        alt="Recognition" 
+        fill 
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        // Using object-contain instead of object-cover
+        className="object-contain p-4 transition-all duration-1000"
+      />
+    </div>
+
+  </div>
+</section>
 
       {/* FOOTER */}
       <footer className="bg-[#1a364b] text-white py-16 md:py-20 px-6 text-center flex flex-col items-center">

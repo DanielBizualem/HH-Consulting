@@ -40,13 +40,13 @@ export default function Hero() {
         <div className="max-w-3xl flex flex-col items-center lg:items-start">
           
           {/** Company Logo - Placed at the top */}
-          <div className="relative w-30 h-15 md:w-80 md:h-30 self-center animate-reveal-sub mb-2">
+          <div className="relative w-50 h-18 md:w-80 md:h-30 self-center animate-reveal-sub mb-2">
             <Image
               src={compony_logo} 
               alt="Company Logo" 
               fill 
               quality={100}
-              className="object-contain" 
+              className="sm:object-contain" 
               priority
             />
           </div>

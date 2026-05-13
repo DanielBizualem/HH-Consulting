@@ -6,13 +6,13 @@ import Link from 'next/link';
 import { Users, Menu } from 'lucide-react';
 
 const desktop_bg = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1777930215/hero_section_nhg5nc.jpg';
-const mobile_bg = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1777937122/mobile_view01_xgpxou.jpg'; 
+const mobile_bg = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1777937122/mobile_view01_xgpxou.jpg';
+const compony_logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1777373171/company_logo02-Photoroom_o8w8zb.png' 
 
 export default function Hero() {
   return (
     <section className="relative w-full h-[400px] lg:h-[100vh] min-h-[350px] lg:min-h-[600px] overflow-hidden bg-white font-sans text-white">
       
-
       {/* 2. BACKGROUND LAYER - No top margin gap */}
       <div className="absolute inset-0 transition-all duration-1000 ease-in-out overflow-hidden lg:mt-0">
         <div className="absolute inset-0 block lg:hidden">
@@ -21,7 +21,6 @@ export default function Hero() {
             alt="Mobile Architecture View" 
             fill 
             quality={100}
-            
             priority
           />
         </div>
@@ -32,15 +31,25 @@ export default function Hero() {
             fill 
             quality={100}
             className="object-center" 
-            
           />
         </div>
-        
       </div>
 
-      {/* 3. CONTENT LAYER - Adjusted padding for smaller height */}
+      {/* 3. CONTENT LAYER */}
       <div className="relative z-20 h-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col pt-[40px] lg:pt-0 justify-center items-center lg:items-start sm:text-center lg:text-left">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl flex flex-col items-center lg:items-start">
+          
+          {/** Company Logo - Placed at the top */}
+          <div className="relative w-30 h-15 md:w-80 md:h-30 self-center animate-reveal-sub mb-2">
+            <Image
+              src={compony_logo} 
+              alt="Company Logo" 
+              fill 
+              quality={100}
+              className="object-contain" 
+              priority
+            />
+          </div>
           
           <div className="overflow-hidden mb-2">
             <span className="block text-[9px] md:text-[12px] font-bold uppercase tracking-[0.3em] text-slate-200 animate-reveal-sub">
@@ -49,30 +58,28 @@ export default function Hero() {
           </div>
 
           <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.2] mb-6 animate-reveal-main max-w-sm md:max-w-none">
-            Designing the Future of <br className="hidden md:block" />
-            <span className="text-white">Infrastructure & Cities</span>
+            Design supervision and <br className="hidden md:block" />
+            <span className="text-white">contract administration</span>
           </h1>
 
           <div className="flex flex-row items-center justify-center lg:justify-start gap-3 animate-fade-in-delayed w-full">
-  <Link href="/#service" className="w-auto">
-    <button className="bg-[#b38b59] hover:bg-[#9a764a] text-white px-4 py-3 rounded-sm text-[10px] sm:text-[12px] font-bold uppercase tracking-[0.15em] lg:tracking-[0.3em] transition-all shadow-xl active:scale-95 z-30 lg:mb-0">
-      Explore Services
-    </button>
-  </Link>
+              <Link href="/#service" className="w-auto">
+                <button className="bg-[#b38b59] hover:bg-[#9a764a] text-white px-4 py-3 rounded-sm text-[10px] sm:text-[12px] font-bold uppercase tracking-[0.15em] lg:tracking-[0.3em] transition-all shadow-xl active:scale-95 z-30 lg:mb-0">
+                  Explore Services
+                </button>
+              </Link>
 
-  <Link href="/#location" className="w-auto">
-    <button className="bg-black/20 backdrop-blur-md border border-white/60 text-white px-6 py-3 rounded-sm text-[10px] sm:text-[12px] font-bold uppercase tracking-wider transition-all hover:bg-white/10 active:scale-95">
-      Contact Us
-    </button>
-  </Link>
-</div>
+              <Link href="/#location" className="w-auto">
+                <button className="bg-black/20 backdrop-blur-md border border-white/60 text-white px-6 py-3 rounded-sm text-[10px] sm:text-[12px] font-bold uppercase tracking-wider transition-all hover:bg-white/10 active:scale-95">
+                  Contact Us
+                </button>
+              </Link>
+          </div>
         </div>
 
-        {/* GLASS CARD: Hidden on mobile */}
-        {/* --- DARKER GLASS CARD SECTION --- */}
+        {/* GLASS CARD */}
         <div className="absolute bottom-12 right-12 animate-fade-in-delayed hidden lg:block">
           <div className="relative group">
-            {/* Upper part: Black/40 for a deeper glass look */}
             <div className="bg-black/30 backdrop-blur-md border border-white/20 rounded-t-lg p-6 flex items-center gap-4 min-w-[280px]">
               <span className="text-5xl font-black text-white tracking-tighter">20+</span>
               <div className="flex flex-col">
@@ -81,7 +88,6 @@ export default function Hero() {
               </div>
             </div>
             
-            {/* Lower part: Black/50 to add depth to the base */}
             <div className="bg-black/40 backdrop-blur-lg border-x border-b border-white/10 rounded-b-lg p-4 flex items-center gap-3">
               <div className="p-2 bg-white/10 rounded-full">
                 <Users size={16} className="text-[#C59D5F]" />

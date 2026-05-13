@@ -2,22 +2,22 @@
 
 import { Globe, Phone, MapPin, Mail } from "lucide-react"
 import Image,{ ImageProps } from 'next/image';
-const facebook = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065499/facebookIcon_ykqzvg.png'
+const instagram = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1778696268/instagram_vj1quc.png'
 const youtube = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065768/youtubeIcon01_bo9il6.png'
 const twitter = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065768/twitterIcon_zuysqm.png'
-const linkedin = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1776065513/linkedinIcon_vxqebf.png'
+const footer_logo = 'https://res.cloudinary.com/djxfy60tt/image/upload/v1778698987/photo_2026-05-13_21-23-02_mdk9ou.jpg'
+
 
 const socialMedia = [
-    {src:facebook, alt:'facebook',href:"https://web.facebook.com/profile.php?id=100076434397072"},
-    {src:youtube, alt:'youtube',href:"https://www.youtube.com/@hhconsulting208"},
-    {src:twitter, alt:'twitter',},
-    {src:linkedin, alt:'linkedin'},
+    {src:instagram, alt:'instagram',href:"https://instagram.com/hhconsulting9500"},
+    {src:youtube, alt:'youtube',href:"https://www.youtube.com/@HHConsultingArchitects-e"},
+    {src:twitter, alt:'twitter', href:"https://www.twitter.com/consulti49748"},
   ]
   
 
 export default function LocationFooter(){
     return (
-        <section id="location" className="relative overflow-hidden px-4 md:px-10 lg:px-20 py-16 md:py-24 bg-[#050914]  font-sans text-slate-200 antialiased">
+        <section id="location" className="relative overflow-hidden px-4 md:px-10 lg:px-20 py-16 md:py-15 md:pb-40 bg-[#050914]  font-sans text-slate-200 antialiased">
   
   {/* --- STRIPE-STYLE BACKGROUND LAYER --- */}
   <div className="absolute inset-0 z-0">
@@ -41,6 +41,34 @@ export default function LocationFooter(){
     
     {/* Contact Details Section */}
     <div className="order-1">
+      {/** Footer logo */}
+      <a 
+  href="#"
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className="group flex items-center justify-center transition-all mb-8 gap-4"
+>
+  {/* Removing the white background box and using a subtle glow instead */}
+  <div className="relative w-32 h-32 md:w-48 md:h-48 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+    <Image 
+      src={footer_logo} 
+      alt="HH Consulting Logo" 
+      fill 
+      className="object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-lighten" 
+    />
+  </div>
+
+  <div className="text-center">
+    <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight">
+      HH Consulting
+    </h1>
+    <p className="text-blue-400 text-xs font-semibold uppercase tracking-[0.2em] mt-1">
+      Architecture & Engineering PLC
+    </p>
+  </div>
+</a>
+
+
       <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-blue-400 mb-8 md:mb-12 text-center md:text-left">
         Location
       </h2>
@@ -72,11 +100,7 @@ export default function LocationFooter(){
           title="Email" 
           content={<span className="text-sm md:text-lg break-all text-slate-300">hhconsultingarchitectengineers@gmail.com</span>} 
         />
-        <ContactItem 
-          icon={<Globe size={22} className="text-blue-400" />} 
-          title="Website" 
-          content={<span className="text-slate-300">www.hhconsulting.et</span>} 
-        />
+        
       </div>
     </div>
     

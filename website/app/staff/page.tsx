@@ -16,8 +16,14 @@ const individualStaff = [
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778242722/bid_department_djghte.jpg", alt: 'Bid Department', category: 'technical', name: "Kidist Tekilu" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778243230/ScadDepartment_fj1n50.png", alt: 'Scad Department', category: 'technical', name: "Teamir Wondosen" },
   { src: "https://res.cloudinary.com/djxfy60tt/image/upload/v1778242728/Scad_department_okxusf.jpg", alt: 'Scad Department', category: 'technical', name: "Estifanos Mokonen" },
-  {src:"https://res.cloudinary.com/djxfy60tt/image/upload/v1778317962/Finance_Department_j2utsm.jpg", alt:"Finance Department", category:"technical",name:"Dawit Biniam"}
+  {src:"https://res.cloudinary.com/djxfy60tt/image/upload/v1778317962/Finance_Department_j2utsm.jpg", alt:"Finance Department", category:"technical",name:"Dawit Biniam"},
+  {src:"https://res.cloudinary.com/djxfy60tt/image/upload/v1778696231/Design_Department_head_c75ng2.jpg",alt:"Design Department Head", category:"technical", name:"Sofia Shemsu"},
 ];
+
+const design_department = [
+  {src:"https://res.cloudinary.com/djxfy60tt/image/upload/v1778696234/Design_Department_01_a1ixjh.jpg", alt:"Design Department", category:"team"},
+  {src:"https://res.cloudinary.com/djxfy60tt/image/upload/v1778696235/Design_Department_02_daxnuz.jpg",alt:"Design Department", category:"team"},
+]
 
 /** * 2. HELPER COMPONENTS */
 const ImageWithLoader = ({ className, ...props }: ImageProps) => {
@@ -93,7 +99,7 @@ export default function StaffPage() {
 
       {/* GALLERY */}
       <section className="py-16 md:py-24 max-w-7xl mx-auto px-6 lg:px-20 space-y-20 md:space-y-24">
-        {/* Leadership - 1 col on mobile, 2 on desktop */}
+        {/* Leadership */}
         <div>
           <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8 flex items-center gap-4">
             <Shield size={14} className="text-[#E5A343]" /> Executive Leadership
@@ -103,7 +109,7 @@ export default function StaffPage() {
           </div>
         </div>
 
-        {/* Operations - 2 cols on mobile, 3 on md, 4 on lg */}
+        {/* Operations */}
         <div>
           <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8 flex items-center gap-4">
             <Rocket size={14} className="text-[#E5A343]" /> Core Operations
@@ -112,36 +118,67 @@ export default function StaffPage() {
             {individualStaff.filter(m => m.category !== 'leadership').map((m, i) => <StaffCard key={i} member={m} />)}
           </div>
         </div>
+
+        {/** Design department - No top/bottom white space */}
+<div className="w-full">
+  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8 flex items-center gap-4">
+    <Users size={14} className="text-[#E5A343]" /> Design Department
+  </h4>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:px-20">
+    {design_department.map((m, i) => (
+      <div key={i} className="group relative bg-white overflow-hidden border border-slate-100 shadow-sm h-auto">
+        {/* Image Container with relative positioning but no fixed aspect ratio */}
+        <div className="relative w-full">
+          <Image
+            src={m.src}
+            alt={m.alt}
+            width={800} // Using width/height to maintain natural proportions
+            height={600}
+            layout="responsive"
+            className="transition-transform duration-1000 group-hover:scale-105" 
+            priority={i === 0}
+          />
+        </div>
+        
+        {/* Label remains at the bottom */}
+        <div className="p-4 bg-white border-t border-slate-50">
+          <span className="text-[9px] font-black text-[#E5A343] tracking-[0.2em] uppercase block">
+            Technical Team
+          </span>
+          <h5 className="text-slate-900 text-xs font-bold tracking-tight uppercase mt-0.5">
+            Design Department
+          </h5>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
       </section>
 
       {/* RECOGNITION */}
-<section className="bg-slate-50 py-16 md:py-32 border-y border-slate-100 mt-20">
-  <div className="max-w-7xl mx-auto px-6 lg:px-20 grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
-    
-    <div className="text-center lg:text-left">
-      <Award size={32} className="text-[#E5A343] mb-6 md:mb-8 mx-auto lg:mx-0" />
-      <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 mb-6 md:mb-8 italic uppercase">
-        Excellence.
-      </h2>
-      <p className="text-slate-600 font-medium">
-        Outstanding performance is fundamental to our engineering legacy.
-      </p>
-    </div>
-
-    {/* The Image Container */}
-    <div className="relative aspect-[4/3] border-[8px] md:border-[12px] border-slate-900 shadow-2xl overflow-hidden bg-white">
-      <ImageWithLoader 
-        src={recognition} 
-        alt="Recognition" 
-        fill 
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        // Using object-contain instead of object-cover
-        className="object-contain p-4 transition-all duration-1000"
-      />
-    </div>
-
-  </div>
-</section>
+      <section className="bg-slate-50 py-16 md:py-32 border-y border-slate-100 mt-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-20 grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+          <div className="text-center lg:text-left">
+            <Award size={32} className="text-[#E5A343] mb-6 md:mb-8 mx-auto lg:mx-0" />
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 mb-6 md:mb-8 italic uppercase">
+              Excellence.
+            </h2>
+            <p className="text-slate-600 font-medium">
+              Outstanding performance is fundamental to our engineering legacy.
+            </p>
+          </div>
+          <div className="relative aspect-[4/3] border-[8px] md:border-[12px] border-slate-900 shadow-2xl overflow-hidden bg-white">
+            <ImageWithLoader 
+              src={recognition} 
+              alt="Recognition" 
+              fill 
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-contain p-4 transition-all duration-1000"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* FOOTER */}
       <footer className="bg-[#1a364b] text-white py-16 md:py-20 px-6 text-center flex flex-col items-center">

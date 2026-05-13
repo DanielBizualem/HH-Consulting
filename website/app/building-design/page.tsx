@@ -81,7 +81,7 @@ export default function BuildingDesignPage() {
 
           {/* Main Title: Tight tracking and elegant contrast */}
           <h1 className="text-5xl md:text-6xl font-[800] tracking-tighter text-slate-900 leading-[0.85] mb-10 antialiased">
-            Building Design <br /> 
+            Supervision Design <br /> 
             <span className="text-[#E5A343]">&</span> <span className="font-light text-slate-400">Architecture.</span>
           </h1>
 

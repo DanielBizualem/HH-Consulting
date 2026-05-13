@@ -57,9 +57,9 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.2] mb-6 animate-reveal-main max-w-sm md:max-w-none">
-            Design supervision and <br className="hidden md:block" />
-            <span className="text-white">contract administration</span>
+          <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-4xl font-black tracking-tight leading-[1.2] mb-6 animate-reveal-main max-w-sm md:max-w-none">
+          supervision and contract administration <br className="hidden md:block" />
+            <span className="text-white">the future of infrastructure and cities</span>
           </h1>
 
           <div className="flex flex-row items-center justify-center lg:justify-start gap-3 animate-fade-in-delayed w-full">
